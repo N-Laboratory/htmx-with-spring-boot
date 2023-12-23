@@ -9,9 +9,9 @@ public interface UserMapper {
 
   Optional<User> findById(Long id);
 
-  int insert(User user);
+  boolean insert(User user);
 
-  int update(User user);
+  boolean update(User user);
 
-  int delete(Long id);
+  boolean delete(Long id);
 }

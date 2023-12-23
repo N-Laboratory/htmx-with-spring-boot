@@ -1,15 +1,15 @@
 package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.service;
 
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception.DataNotFoundException;
+import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserRequest;
 import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity.User;
 
 public interface UserService {
 
-  User getUser(Long id) throws DataNotFoundException;
+  User getUser(Long id) throws Exception;
 
-  int createUser(User user);
+  void createUser(User user) throws Exception;
 
-  int updateUser(User user);
+  void updateUser(User user, UserRequest userRequest) throws Exception;
 
-  int deleteUser(Long id);
+  void deleteUser(Long id) throws Exception;
 }
