@@ -22,7 +22,7 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
    * Create HTTP response for DataNotFoundException.
    *
    * @param e DataNotFoundException
-   * @return HTTP response (HttpStatus.BAD_REQUEST + error massage)
+   * @return HTTP response (HttpStatus.BAD_REQUEST + error message)
    */
   @ExceptionHandler({DataNotFoundException.class})
   public ResponseEntity<Object> handleDataNotFoundException(DataNotFoundException e) {
@@ -55,5 +55,18 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
     log.error("Error: {}", e.getMessage());
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
         .body(e.getMessage());
+  }
+
+  /**
+   * Create HTTP response for Exception.
+   *
+   * @param e Exception
+   * @return HTTP response (HttpStatus.INTERNAL_SERVER_ERROR + error message)
+   */
+  @ExceptionHandler({Exception.class})
+  public ResponseEntity<Object> handleException(Exception e) {
+    log.error("Error: {}", e.getMessage());
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body("An unexpected error has occurred. " + e.getMessage());
   }
 }
