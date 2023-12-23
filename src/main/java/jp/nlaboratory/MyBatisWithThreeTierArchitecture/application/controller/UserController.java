@@ -26,7 +26,7 @@ public class UserController {
    * @return UserResponse (id, name, email, delFlg)
    */
   @GetMapping(value = "/search")
-  public UserResponse userSearch(@ModelAttribute UserRequest userRequest)
+  public UserResponse search(@ModelAttribute UserRequest userRequest)
       throws Exception {
     User user = userService.getUser(userRequest.getId());
 
