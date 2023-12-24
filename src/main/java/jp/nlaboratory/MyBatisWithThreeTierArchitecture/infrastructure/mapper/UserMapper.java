@@ -4,6 +4,9 @@ import java.util.Optional;
 import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ * Mapper for user data CRUD.
+ */
 @Mapper
 public interface UserMapper {
 

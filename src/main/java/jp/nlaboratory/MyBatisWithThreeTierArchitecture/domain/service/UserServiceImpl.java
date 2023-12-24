@@ -7,6 +7,9 @@ import jp.nlaboratory.MyBatisWithThreeTierArchitecture.infrastructure.mapper.Use
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation for user data CRUD.
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
