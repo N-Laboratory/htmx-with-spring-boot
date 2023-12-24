@@ -2,6 +2,7 @@ package jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.controller;
 
 import java.net.ConnectException;
 import jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception.DataNotFoundException;
+import jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception.InvalidParameterException;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,19 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
     log.error("Error: {}", e.getMessage());
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
         .body(e.getMessage());
+  }
+
+  /**
+   * Create HTTP response for InvalidParameterException.
+   *
+   * @param e InvalidParameterException
+   * @return HTTP response (HttpStatus.BAD_REQUEST + error message)
+   */
+  @ExceptionHandler({InvalidParameterException.class})
+  public ResponseEntity<Object> handleInvalidParameterException(InvalidParameterException e) {
+    log.error("Error: {}", e.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        .body("Request parameter is invalid.\n" + e.getMessage());
   }
 
   /**
