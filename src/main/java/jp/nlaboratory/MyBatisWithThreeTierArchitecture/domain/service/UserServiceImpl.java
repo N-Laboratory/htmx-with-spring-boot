@@ -1,7 +1,7 @@
 package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.service;
 
 import jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception.DataNotFoundException;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserRequest;
+import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity.User;
 import jp.nlaboratory.MyBatisWithThreeTierArchitecture.infrastructure.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +26,19 @@ public class UserServiceImpl implements UserService {
   public void createUser(User user) throws Exception {
     boolean isSuccess = userMapper.insert(user);
     if (!isSuccess) {
-      throw new Exception("An unexpected error has occurred.");
+      throw new Exception();
     }
   }
 
   @Override
-  public void updateUser(User user, UserRequest userRequest) throws Exception {
-    user.setName(userRequest.getName());
-    user.setEmail(userRequest.getEmail());
-    user.setDelFlg(userRequest.isDelFlg());
+  public void updateUser(User user, UserUpdateRequest request) throws Exception {
+    user.setName(request.getName());
+    user.setEmail(request.getEmail());
+    user.setDelFlg(request.isDelFlg());
 
     boolean isSuccess = userMapper.update(user);
     if (!isSuccess) {
-      throw new Exception("An unexpected error has occurred. User id = " + user.getId());
+      throw new Exception("User id = " + user.getId());
     }
   }
 
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
   public void deleteUser(Long id) throws Exception {
     boolean isSuccess = userMapper.delete(id);
     if (!isSuccess) {
-      throw new Exception("An unexpected error has occurred. User id = " + id);
+      throw new Exception("User id = " + id);
     }
   }
 }

@@ -1,6 +1,6 @@
 package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.service;
 
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserRequest;
+import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity.User;
 
 /**
@@ -12,7 +12,7 @@ public interface UserService {
 
   void createUser(User user) throws Exception;
 
-  void updateUser(User user, UserRequest userRequest) throws Exception;
+  void updateUser(User user, UserUpdateRequest request) throws Exception;
 
   void deleteUser(Long id) throws Exception;
 }
