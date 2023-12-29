@@ -1,5 +1,6 @@
 package jp.nlaboratory.mybatis.sample.domain.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResponse {
 
+  @Schema(description = "User id", example = "1")
   private Long id;
 
+  @Schema(description = "User name", example = "John Smith")
   private String name;
-
+  
+  @Schema(description = "User email", example = "john_smith@test.com")
   private String email;
 
+  @Schema(description = "User delete flag", example = "false")
   private Boolean delFlg;
 }
