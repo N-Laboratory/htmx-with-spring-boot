@@ -1,4 +1,4 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto;
+package jp.nlaboratory.mybatis.sample.domain.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ public class UserCreateRequest {
 
   @NotBlank(message = "Name is required.")
   private String name;
-  
+
   @NotBlank(message = "Email is required.")
   private String email;
 }

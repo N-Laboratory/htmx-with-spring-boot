@@ -1,7 +1,7 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.infrastructure.mapper;
+package jp.nlaboratory.mybatis.sample.infrastructure.mapper;
 
 import java.util.Optional;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity.User;
+import jp.nlaboratory.mybatis.sample.domain.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

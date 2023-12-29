@@ -1,14 +1,14 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.controller;
+package jp.nlaboratory.mybatis.sample.application.controller;
 
 import java.time.LocalDateTime;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception.InvalidParameterException;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserCreateRequest;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserRequest;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserResponse;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserUpdateRequest;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity.User;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.service.UserService;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.utils.Converter;
+import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
+import jp.nlaboratory.mybatis.sample.domain.dto.UserCreateRequest;
+import jp.nlaboratory.mybatis.sample.domain.dto.UserRequest;
+import jp.nlaboratory.mybatis.sample.domain.dto.UserResponse;
+import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
+import jp.nlaboratory.mybatis.sample.domain.entity.User;
+import jp.nlaboratory.mybatis.sample.domain.service.UserService;
+import jp.nlaboratory.mybatis.sample.domain.utils.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;

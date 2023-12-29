@@ -1,4 +1,4 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception;
+package jp.nlaboratory.mybatis.sample.application.exception;
 
 import java.io.Serial;
 

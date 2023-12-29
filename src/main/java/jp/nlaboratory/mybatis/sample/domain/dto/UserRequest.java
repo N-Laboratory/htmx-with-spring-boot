@@ -1,4 +1,4 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto;
+package jp.nlaboratory.mybatis.sample.domain.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

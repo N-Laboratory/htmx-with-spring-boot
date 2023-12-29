@@ -1,4 +1,4 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.utils;
+package jp.nlaboratory.mybatis.sample.domain.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

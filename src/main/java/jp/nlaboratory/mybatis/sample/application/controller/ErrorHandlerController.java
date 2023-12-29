@@ -1,8 +1,8 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.controller;
+package jp.nlaboratory.mybatis.sample.application.controller;
 
 import java.net.ConnectException;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception.DataNotFoundException;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.application.exception.InvalidParameterException;
+import jp.nlaboratory.mybatis.sample.application.exception.DataNotFoundException;
+import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.http.HttpStatus;

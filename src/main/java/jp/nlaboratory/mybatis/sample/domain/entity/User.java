@@ -1,4 +1,4 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity;
+package jp.nlaboratory.mybatis.sample.domain.entity;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

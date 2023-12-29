@@ -1,7 +1,7 @@
-package jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.service;
+package jp.nlaboratory.mybatis.sample.domain.service;
 
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.dto.UserUpdateRequest;
-import jp.nlaboratory.MyBatisWithThreeTierArchitecture.domain.entity.User;
+import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
+import jp.nlaboratory.mybatis.sample.domain.entity.User;
 
 /**
  * Interface for user data CRUD.
