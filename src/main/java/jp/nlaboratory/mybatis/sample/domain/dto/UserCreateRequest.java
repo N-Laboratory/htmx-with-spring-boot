@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 public class UserCreateRequest {
 
   @Schema(description = "User name", example = "John Smith")
-  @NotBlank(message = "Name is required.")
+  @NotBlank
   private String name;
 
   @Schema(description = "User email", example = "john_smith@test.com")
-  @NotBlank(message = "Email is required.")
+  @NotBlank
   private String email;
 }
