@@ -9,10 +9,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
+import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserCreateRequest;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserResponse;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
+import jp.nlaboratory.mybatis.sample.domain.service.MessageService;
 import jp.nlaboratory.mybatis.sample.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,6 +37,8 @@ public class UserController {
 
   @Autowired
   UserService userService;
+  @Autowired
+  MessageService messageService;
 
   /**
    * Search user.
@@ -131,6 +135,11 @@ public class UserController {
   public UserResponse create(@RequestBody @Validated UserCreateRequest request,
       BindingResult result)
       throws Exception {
+    if (result.hasErrors()) {
+      throw new InvalidParameterException(
+          messageService.convertFieldErrorMsgListToJson(result.getFieldErrors()));
+    }
+
     User user =
         new User(null, request.getName(), request.getEmail(), LocalDateTime.now(), null,
             false);
@@ -192,6 +201,11 @@ public class UserController {
   public UserResponse update(@RequestBody @Validated UserUpdateRequest request,
       BindingResult result)
       throws Exception {
+    if (result.hasErrors()) {
+      throw new InvalidParameterException(
+          messageService.convertFieldErrorMsgListToJson(result.getFieldErrors()));
+    }
+    
     User user = userService.getUser(request.getId());
     userService.updateUser(user, request);
 
