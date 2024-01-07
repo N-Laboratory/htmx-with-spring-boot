@@ -28,7 +28,7 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
   @ExceptionHandler({DataNotFoundException.class})
   public ResponseEntity<Object> handleDataNotFoundException(DataNotFoundException e) {
     log.error("Error: {}", e.getMessage());
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+    return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(e.getMessage());
   }
 
