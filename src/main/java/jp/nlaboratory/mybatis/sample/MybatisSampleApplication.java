@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @OpenAPIDefinition(
     info = @Info(
-        title = "Spring Boot 3 (3-tier architecture) with MyBatis",
+        title = "Spring Boot 3 with MyBatis",
         version = "1.0.0",
         description =
             "Sample project for spring boot 3 with MyBatis. This project implement the following. "
