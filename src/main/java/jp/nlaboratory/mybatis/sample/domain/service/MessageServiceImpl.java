@@ -17,8 +17,12 @@ import org.springframework.validation.FieldError;
 @Service
 public class MessageServiceImpl implements MessageService {
 
+  private final MessageSource messageSource;
+
   @Autowired
-  MessageSource messageSource;
+  public MessageServiceImpl(MessageSource messageSource) {
+    this.messageSource = messageSource;
+  }
 
   @Override
   public String convertFieldErrorMsgListToJson(List<FieldError> errorList)

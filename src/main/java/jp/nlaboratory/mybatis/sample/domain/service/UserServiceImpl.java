@@ -13,8 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+  private final UserMapper userMapper;
+
   @Autowired
-  private UserMapper userMapper;
+  public UserServiceImpl(UserMapper userMapper) {
+    this.userMapper = userMapper;
+  }
 
   @Override
   public User getUser(Long id) throws Exception {

@@ -35,10 +35,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "UserController", description = "User CRUD API with MyBatis.")
 public class UserController {
 
+  private final UserService userService;
+  private final MessageService messageService;
+
   @Autowired
-  UserService userService;
-  @Autowired
-  MessageService messageService;
+  public UserController(UserService userService, MessageService messageService) {
+    this.userService = userService;
+    this.messageService = messageService;
+  }
 
   /**
    * Search user.
@@ -205,7 +209,7 @@ public class UserController {
       throw new InvalidParameterException(
           messageService.convertFieldErrorMsgListToJson(result.getFieldErrors()));
     }
-    
+
     User user = userService.getUser(request.getId());
     userService.updateUser(user, request);
 
