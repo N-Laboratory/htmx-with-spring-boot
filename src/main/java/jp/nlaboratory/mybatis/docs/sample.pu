@@ -1,0 +1,32 @@
+@startuml sample sequence diagram
+title sample sequence diagram
+
+hide footbox
+actor user
+Participant Application as App
+database database as DB
+
+== Foo ==
+autonumber
+
+user -> App : foo
+activate App
+
+  alt true
+    App --> user : foo
+  else false
+    App --> user: bar
+  end
+
+  App -> DB : foo
+  activate DB
+  note right
+    foo
+  end note
+  DB -> App : bar
+  deactivate DB
+
+App -> user : bar
+deactivate App
+
+@enduml
