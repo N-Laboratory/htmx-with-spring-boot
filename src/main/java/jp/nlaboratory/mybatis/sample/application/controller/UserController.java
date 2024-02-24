@@ -20,8 +20,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Api for user data CRUD.
  */
 @RestController
-@RequestMapping("api/v1/user")
+@RequestMapping("api/v1")
 @Tag(name = "UserController", description = "User CRUD API with MyBatis.")
 public class UserController {
 
@@ -79,7 +81,7 @@ public class UserController {
           )
       }
   )
-  @GetMapping(value = "/search")
+  @GetMapping(value = "/users")
   public UserResponse search(@Parameter(
       name = "id",
       description = "User id for user search.",
@@ -135,9 +137,9 @@ public class UserController {
           @Content(schema = @Schema(implementation = UserCreateRequest.class))
       }
   )
-  @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
   public UserResponse create(@RequestBody @Validated UserCreateRequest request,
-      BindingResult result)
+                             BindingResult result)
       throws Exception {
     if (result.hasErrors()) {
       throw new InvalidParameterException(
@@ -201,9 +203,9 @@ public class UserController {
           @Content(schema = @Schema(implementation = UserUpdateRequest.class))
       }
   )
-  @PostMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PutMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
   public UserResponse update(@RequestBody @Validated UserUpdateRequest request,
-      BindingResult result)
+                             BindingResult result)
       throws Exception {
     if (result.hasErrors()) {
       throw new InvalidParameterException(
@@ -251,7 +253,7 @@ public class UserController {
           )
       }
   )
-  @GetMapping(value = "/delete")
+  @DeleteMapping(value = "/users")
   public UserResponse delete(@Parameter(
       name = "id",
       description = "User id for user deletion.",
