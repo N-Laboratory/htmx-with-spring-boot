@@ -3,8 +3,12 @@ package jp.nlaboratory.mybatis.sample;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.servers.Server;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Application main class.
@@ -28,6 +32,20 @@ public class MybatisSampleApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(MybatisSampleApplication.class, args);
+  }
+
+  @Bean
+  public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+      @SuppressWarnings("checkstyle:SeparatorWrap")
+      @Override
+      public void addCorsMappings(@NotNull CorsRegistry registry) {
+        registry.addMapping("/api/v1/users")
+            .allowedOrigins("http://localhost:3000")
+            .allowedMethods("GET", "POST", "PUT", "DELETE")
+            .allowedHeaders("Authorization");
+      }
+    };
   }
 
 }
