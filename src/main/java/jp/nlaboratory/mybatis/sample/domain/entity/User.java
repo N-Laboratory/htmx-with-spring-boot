@@ -17,11 +17,11 @@ public class User {
   @Schema(description = "User id", example = "1")
   private Long id;
 
-  @Schema(description = "User name", example = "John Smith")
-  private String name;
-
   @Schema(description = "User email", example = "john_smith@test.com")
   private String email;
+
+  @Schema(description = "User password", example = "password")
+  private String password;
 
   @Schema(description = "Time the user was created", example = "2023/10/10 10:10:10")
   private LocalDateTime createdAt;

@@ -21,13 +21,13 @@ public class UserUpdateRequest {
   @Positive
   private Long id;
 
-  @Schema(description = "User name", example = "John Smith")
-  @NotBlank
-  private String name;
-
   @Schema(description = "User email", example = "john_smith@test.com")
   @NotBlank
   private String email;
+
+  @Schema(description = "User password", example = "password")
+  @NotBlank
+  private String password;
 
   @Schema(description = "User delete flag", example = "false")
   @NotNull

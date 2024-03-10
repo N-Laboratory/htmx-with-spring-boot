@@ -50,7 +50,7 @@ public class UserController {
    * Search user.
    *
    * @param id User id
-   * @return UserResponse (id, name, email, delFlg)
+   * @return UserResponse (id, email, password, delFlg)
    */
   @Operation(
       summary = "Get user data.",
@@ -92,14 +92,14 @@ public class UserController {
       throws Exception {
     User user = userService.getUser(id);
 
-    return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.isDelFlg());
+    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), user.isDelFlg());
   }
 
   /**
    * Create user.
    *
-   * @param request UserCreateRequest (name, email)
-   * @return UserResponse (id, name, email, delFlg)
+   * @param request UserCreateRequest (email, password)
+   * @return UserResponse (id, email, password, delFlg)
    */
   @Operation(
       summary = "Create user data.",
@@ -118,7 +118,7 @@ public class UserController {
               content = {
                   @Content(mediaType = "text/plan",
                       schema = @Schema(example = "Request parameter is invalid.\n"
-                          + "{\"name\":\"name is required.\"}"))
+                          + "{\"password\":\"password is required.\"}"))
               }
           ),
           @ApiResponse(responseCode = "500", description = "Internal server error.",
@@ -139,7 +139,7 @@ public class UserController {
   )
   @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
   public UserResponse create(@RequestBody @Validated UserCreateRequest request,
-                             BindingResult result)
+      BindingResult result)
       throws Exception {
     if (result.hasErrors()) {
       throw new InvalidParameterException(
@@ -147,18 +147,18 @@ public class UserController {
     }
 
     User user =
-        new User(null, request.getName(), request.getEmail(), LocalDateTime.now(), null,
+        new User(null, request.getEmail(), request.getPassword(), LocalDateTime.now(), null,
             false);
     userService.createUser(user);
 
-    return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.isDelFlg());
+    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), user.isDelFlg());
   }
 
   /**
    * Update user.
    *
-   * @param request UserUpdateRequest (id, name, email, delFlg)
-   * @return UserResponse (id, name, email, delFlg)
+   * @param request UserUpdateRequest (id, email, password, delFlg)
+   * @return UserResponse (id, email, password, delFlg)
    */
   @Operation(
       summary = "Update user data.",
@@ -177,7 +177,7 @@ public class UserController {
               content = {
                   @Content(mediaType = MediaType.TEXT_PLAIN_VALUE,
                       schema = @Schema(example = "Request parameter is invalid.\n"
-                          + "{\"name\":\"name is required.\"}"))
+                          + "{\"password\":\"password is required.\"}"))
               }
           ),
           @ApiResponse(responseCode = "404", description = "User not found.",
@@ -205,7 +205,7 @@ public class UserController {
   )
   @PutMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
   public UserResponse update(@RequestBody @Validated UserUpdateRequest request,
-                             BindingResult result)
+      BindingResult result)
       throws Exception {
     if (result.hasErrors()) {
       throw new InvalidParameterException(
@@ -215,14 +215,14 @@ public class UserController {
     User user = userService.getUser(request.getId());
     userService.updateUser(user, request);
 
-    return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.isDelFlg());
+    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), user.isDelFlg());
   }
 
   /**
    * Delete user.
    *
    * @param id User id
-   * @return UserResponse (id, name, email, delFlg)
+   * @return UserResponse (id, email, password, delFlg)
    */
   @Operation(
       summary = "Delete user data.",
@@ -265,6 +265,6 @@ public class UserController {
     User user = userService.getUser(id);
     userService.deleteUser(user.getId());
 
-    return new UserResponse(user.getId(), user.getName(), user.getEmail(), true);
+    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), true);
   }
 }
