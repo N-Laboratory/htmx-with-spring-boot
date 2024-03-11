@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
+import java.util.List;
 import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserCreateRequest;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserResponse;
@@ -18,6 +19,8 @@ import jp.nlaboratory.mybatis.sample.domain.service.MessageService;
 import jp.nlaboratory.mybatis.sample.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,12 +30,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Api for user data CRUD.
  */
-@RestController
+@Controller
 @RequestMapping("api/v1")
 @Tag(name = "UserController", description = "User CRUD API with MyBatis.")
 public class UserController {
@@ -138,8 +140,8 @@ public class UserController {
       }
   )
   @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public UserResponse create(@RequestBody @Validated UserCreateRequest request,
-      BindingResult result)
+  public String create(@RequestBody @Validated UserCreateRequest request,
+      BindingResult result, Model model)
       throws Exception {
     if (result.hasErrors()) {
       throw new InvalidParameterException(
@@ -151,7 +153,8 @@ public class UserController {
             false);
     userService.createUser(user);
 
-    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), user.isDelFlg());
+    model.addAttribute("userList", List.of(user));
+    return "userList";
   }
 
   /**

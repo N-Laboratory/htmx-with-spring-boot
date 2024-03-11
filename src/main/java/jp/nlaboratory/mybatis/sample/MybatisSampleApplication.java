@@ -37,13 +37,11 @@ public class MybatisSampleApplication {
   @Bean
   public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
-      @SuppressWarnings("checkstyle:SeparatorWrap")
       @Override
       public void addCorsMappings(@NotNull CorsRegistry registry) {
         registry.addMapping("/api/v1/users")
             .allowedOrigins("http://localhost:3000")
-            .allowedMethods("GET", "POST", "PUT", "DELETE")
-            .allowedHeaders("Authorization");
+            .allowedMethods("GET", "POST", "PUT", "DELETE");
       }
     };
   }
