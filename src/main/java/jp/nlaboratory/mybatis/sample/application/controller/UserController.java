@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
-import java.util.List;
 import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserCreateRequest;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserResponse;
@@ -153,8 +152,8 @@ public class UserController {
             false);
     userService.createUser(user);
 
-    model.addAttribute("userList", List.of(user));
-    return "userList";
+    model.addAttribute("user", user);
+    return "result";
   }
 
   /**
