@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script src="js/htmx.min.js"></script>
+  <script src="js/json-enc.js"></script>
+</head>
+<body class="dark:bg-gray-900">
+  <div class="lg:pb-12">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <header class="flex items-center justify-center py-4 md:py-8">
+        <nav class="hidden gap-12 lg:flex">
+          <a href="/src/list" class="text-2xl font-semibold text-gray-300 transition duration-100 hover:text-white active:text-indigo-700">Show users</a>
+          <a href="/src/create" class="text-2xl font-semibold text-gray-300 transition duration-100 hover:text-white active:text-indigo-700">Create user</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+  <h2 class="mb-4 text-center text-2xl font-bold text-white md:mb-10 lg:text-3xl">User list</h2>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto max-w-screen-md">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Product name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Color
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Edit</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Email
+                </th>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Password
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
