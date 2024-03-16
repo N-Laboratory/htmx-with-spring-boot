@@ -82,7 +82,7 @@ public class UserController {
           )
       }
   )
-  @GetMapping(value = "/users")
+  @GetMapping(value = "/user")
   public UserResponse search(@Parameter(
       name = "id",
       description = "User id for user search.",
@@ -138,7 +138,7 @@ public class UserController {
           @Content(schema = @Schema(implementation = UserCreateRequest.class))
       }
   )
-  @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(value = "/user", consumes = MediaType.APPLICATION_JSON_VALUE)
   public String create(@RequestBody @Validated UserCreateRequest request,
       BindingResult result, Model model)
       throws Exception {
@@ -205,7 +205,7 @@ public class UserController {
           @Content(schema = @Schema(implementation = UserUpdateRequest.class))
       }
   )
-  @PutMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PutMapping(value = "/user", consumes = MediaType.APPLICATION_JSON_VALUE)
   public UserResponse update(@RequestBody @Validated UserUpdateRequest request,
       BindingResult result)
       throws Exception {
@@ -255,7 +255,7 @@ public class UserController {
           )
       }
   )
-  @DeleteMapping(value = "/users")
+  @DeleteMapping(value = "/user")
   public UserResponse delete(@Parameter(
       name = "id",
       description = "User id for user deletion.",
