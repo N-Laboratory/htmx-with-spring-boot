@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.nlaboratory.mybatis.sample.infrastructure.mapper.UserMapper">
-  <select id="findById" resultType="jp.nlaboratory.mybatis.sample.domain.entity.User">
+  <select id="findById" resultType="User">
     select * from user where id = #{id}
   </select>
   <insert id="insert" keyProperty="id" useGeneratedKeys="true">
