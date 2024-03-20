@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserCreateRequest;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserResponse;
@@ -16,7 +18,6 @@ import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
 import jp.nlaboratory.mybatis.sample.domain.service.MessageService;
 import jp.nlaboratory.mybatis.sample.domain.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,10 +42,50 @@ public class UserController {
   private final UserService userService;
   private final MessageService messageService;
 
-  @Autowired
   public UserController(UserService userService, MessageService messageService) {
     this.userService = userService;
     this.messageService = messageService;
+  }
+
+    /**
+   * Search all user.
+   *
+   * @return user table
+   */
+  @Operation(
+      summary = "Get all user data.",
+      description = "Get all user data from MySQL DB using MyBatis."
+  )
+  @ApiResponses(
+      value = {
+          @ApiResponse(responseCode = "200", description = "Success.",
+              content = {
+                  @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                      schema = @Schema(implementation = UserResponse.class)
+                  )
+              }
+          ),
+          @ApiResponse(responseCode = "404", description = "User not found.",
+              content = {
+                  @Content(mediaType = "text/plan",
+                      schema = @Schema(example = "User not found. User id = 1.")
+                  )
+              }
+          ),
+          @ApiResponse(responseCode = "500", description = "Internal Server Error.",
+              content = {
+                  @Content(mediaType = "text/plan",
+                      schema = @Schema(example = "An unexpected error has occurred. "
+                          + "Some error message..."))
+              }
+          )
+      }
+  )
+  @GetMapping(value = "/users")
+  public String searchAll(Model model) throws Exception {
+    model.addAttribute("users", userService.getAllUser());
+
+    return "userList";
   }
 
   /**

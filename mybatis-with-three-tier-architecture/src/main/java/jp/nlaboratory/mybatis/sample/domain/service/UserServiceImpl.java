@@ -4,7 +4,9 @@ import jp.nlaboratory.mybatis.sample.application.exception.DataNotFoundException
 import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
 import jp.nlaboratory.mybatis.sample.infrastructure.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,9 +17,13 @@ public class UserServiceImpl implements UserService {
 
   private final UserMapper userMapper;
 
-  @Autowired
   public UserServiceImpl(UserMapper userMapper) {
     this.userMapper = userMapper;
+  }
+
+  @Override
+  public List<User> getAllUser() throws Exception {
+    return userMapper.findAll();
   }
 
   @Override

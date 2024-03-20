@@ -1,5 +1,6 @@
 package jp.nlaboratory.mybatis.sample.infrastructure.mapper;
 
+import java.util.List;
 import java.util.Optional;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -9,6 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper {
+
+  List<User> findAll();
 
   Optional<User> findById(Long id);
 
