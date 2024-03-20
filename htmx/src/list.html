@@ -1,28 +1,40 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./output.css" rel="stylesheet">
-  <script src="js/htmx.min.js"></script>
-  <script src="js/json-enc.js"></script>
-</head>
-<body class="dark:bg-gray-900">
-  <div class="lg:pb-12">
-    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-      <header class="flex items-center justify-center py-4 md:py-8">
-        <nav class="gap-12 flex">
-          <a href="/src/list" class="text-2xl font-semibold text-gray-300 transition duration-100 hover:text-white active:text-indigo-700">Show users</a>
-          <a href="/src/create" class="text-2xl font-semibold text-gray-300 transition duration-100 hover:text-white active:text-indigo-700">Create user</a>
-        </nav>
-      </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <script src="js/htmx.min.js"></script>
+    <script src="js/json-enc.js"></script>
+  </head>
+  <body class="dark:bg-gray-900">
+    <div class="lg:pb-12">
+      <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+        <header class="flex items-center justify-center py-4 md:py-8">
+          <nav class="gap-12 flex">
+            <a
+              href="/src/list"
+              class="text-2xl font-semibold text-gray-300 transition duration-100 hover:text-white active:text-indigo-700"
+              >Show users</a
+            >
+            <a
+              href="/src/create"
+              class="text-2xl font-semibold text-gray-300 transition duration-100 hover:text-white active:text-indigo-700"
+              >Create user</a
+            >
+          </nav>
+        </header>
+      </div>
     </div>
-  </div>
-  <h2 class="mb-4 text-center text-2xl font-bold text-white md:mb-10 lg:text-3xl">User list</h2>
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto max-w-screen-md">
-    <div hx-get="http://localhost:8080/api/v1/users" hx-trigger="load">
+    <h2
+      class="mb-4 text-center text-2xl font-bold text-white md:mb-10 lg:text-3xl"
+    >
+      User list
+    </h2>
+    <div
+      class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto max-w-screen-md"
+    >
+      <div hx-get="http://localhost:8080/api/v1/users" hx-trigger="load"></div>
     </div>
-</div>
-
-</body>
+  </body>
 </html>

@@ -1,10 +1,17 @@
-<div class="bg-white py-6 sm:py-8 lg:py-12">
-  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-    <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">The following
-      users have been created </h2>
-    <p class="mx-auto text-2xl max-w-screen-md text-center text-gray-500 md:text-lg"> Email:
-      [[${user.email}]]</p>
-    <p class="mx-auto text-2xl max-w-screen-md text-center text-gray-500 md:text-lg"> Password:
-      [[${user.password}]]</p>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">The following
+        users have been created</h5>
+    </div>
+    <div class="modal-body">
+      <p class="mx-auto text-2xl max-w-screen-md text-center text-gray-500 md:text-lg"> Email:
+        [[${user.email}]]</p>
+      <p class="mx-auto text-2xl max-w-screen-md text-center text-gray-500 md:text-lg"> Password:
+        [[${user.password}]]</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
   </div>
 </div>
