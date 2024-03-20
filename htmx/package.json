@@ -6,7 +6,6 @@
     "htmx.org": "^1.9.10"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
-    "tailwindcss": "^3.4.1"
+    "prettier": "^3.2.5"
   }
 }
