@@ -39,7 +39,7 @@ public class MybatisSampleApplication {
     return new WebMvcConfigurer() {
       @Override
       public void addCorsMappings(@NotNull CorsRegistry registry) {
-        registry.addMapping("/api/v1/users")
+        registry.addMapping("/api/v1/**")
             .allowedOrigins("http://localhost:3000")
             .allowedMethods("GET", "POST", "PUT", "DELETE");
       }
