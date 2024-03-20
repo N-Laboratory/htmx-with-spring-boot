@@ -47,6 +47,11 @@ public class UserController {
     this.messageService = messageService;
   }
 
+  @GetMapping(value = "/modal")
+  public String modal(Model model) throws Exception {
+    return "modal";
+  }
+
     /**
    * Search all user.
    *
