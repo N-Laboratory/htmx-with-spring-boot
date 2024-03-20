@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "format": "prettier --write 'src/**/*.html'"
+    "format": "prettier --write src/**/*.html"
   },
   "dependencies": {
     "htmx.org": "^1.9.10"
