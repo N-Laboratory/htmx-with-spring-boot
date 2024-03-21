@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "format": "prettier --write src/**/*.html"
+    "format": "prettier --write *.html"
   },
   "devDependencies": {
     "prettier": "^3.2.5"
