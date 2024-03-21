@@ -76,24 +76,24 @@
         hx-trigger="load"
       ></div>
       <button
-        hx-get="http://localhost:8080/api/v1/modal"
+        hx-get="http://localhost:8080/api/v1/modal/create"
         hx-trigger="click"
-        hx-target="#crud-modal"
-        data-modal-target="crud-modal"
-        data-modal-toggle="crud-modal"
+        hx-target="#create-modal"
+        data-modal-target="create-modal"
+        data-modal-toggle="create-modal"
         class="block text-white mt-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         type="button"
       >
         Add new user
       </button>
-      <div
-        id="crud-modal"
-        data-modal-backdrop="static"
-        tabindex="-1"
-        aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-      ></div>
     </div>
+    <div
+      id="create-modal"
+      data-modal-backdrop="static"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    ></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </body>

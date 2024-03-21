@@ -47,9 +47,9 @@ public class UserController {
     this.messageService = messageService;
   }
 
-  @GetMapping(value = "/modal")
+  @GetMapping(value = "/modal/create")
   public String modal(Model model) throws Exception {
-    return "modal";
+    return "modal/create";
   }
 
     /**
@@ -90,6 +90,7 @@ public class UserController {
   public String searchAll(Model model) throws Exception {
     model.addAttribute("users", userService.getAllUser());
 
+    Thread.sleep(1000);
     return "userList";
   }
 
