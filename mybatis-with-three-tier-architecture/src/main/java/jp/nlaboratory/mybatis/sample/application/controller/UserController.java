@@ -48,8 +48,15 @@ public class UserController {
   }
 
   @GetMapping(value = "/modal/create")
-  public String modal(Model model) throws Exception {
+  public String showCreateModal(Model model) throws Exception {
     return "modal/create";
+  }
+
+  @GetMapping(value = "/modal/delete")
+  public String showDeleteModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
+    User user = userService.getUser(id);
+    model.addAttribute("user", user);
+    return "modal/delete";
   }
 
     /**

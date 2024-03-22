@@ -104,9 +104,28 @@
           >
         </td>
         <td class="w-1/12 px-6 py-4 text-right">
-          <a href="#" class="text-orange-800 font-medium hover:underline"
-            >Delete</a
+          <form
+            hx-get="http://localhost:8080/api/v1/modal/delete"
+            hx-target="#delete-modal"
           >
+            <input type="hidden" name="id" th:value="${user.id}" />
+            <button
+              class="text-orange-800 font-medium hover:underline"
+              onclick="new Modal(document.getElementById('delete-modal'),{ backdrop:'static'}).show();"
+            >
+              Delete
+            </button>
+            <!-- data-modal-show does not work.
+            <button
+              hx-get="http://localhost:8080/api/v1/modal/delete"
+              hx-trigger="click"
+              hx-target="#delete-modal"
+              data-modal-target="delete-modal"
+              data-modal-show="delete-modal"
+              class="text-orange-800 font-medium hover:underline">Delete
+            </button>
+             -->
+          </form>
         </td>
       </tr>
     </tbody>
