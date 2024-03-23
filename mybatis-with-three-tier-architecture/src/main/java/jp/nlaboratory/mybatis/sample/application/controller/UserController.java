@@ -206,8 +206,10 @@ public class UserController {
             false);
     userService.createUser(user);
 
-    model.addAttribute("user", user);
-    return "modal/createResult";
+      model.addAttribute("user", user);
+      model.addAttribute("message", "The following user have been created:");
+
+    return "modal/result";
   }
 
   /**
