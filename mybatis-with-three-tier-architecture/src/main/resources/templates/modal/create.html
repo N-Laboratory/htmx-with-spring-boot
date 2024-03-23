@@ -1,4 +1,4 @@
-<div class="relative p-4 w-full max-w-md max-h-full">
+<div id="create-modal-content" class="relative p-4 w-full max-w-md max-h-full">
   <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
     <div
       class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
@@ -33,6 +33,7 @@
       class="p-4 md:p-5"
       hx-post="http://localhost:8080/api/v1/user"
       hx-ext="json-enc"
+      hx-target="#create-modal-content"
     >
       <div class="grid gap-4 mb-4 grid-cols-2">
         <div class="col-span-2">

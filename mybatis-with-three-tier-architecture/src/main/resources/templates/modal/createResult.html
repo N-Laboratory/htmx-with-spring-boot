@@ -1,0 +1,41 @@
+<div class="relative p-4 w-full max-w-md max-h-full">
+  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+    <div class="p-4 md:p-5 text-center">
+      <svg
+        class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        />
+      </svg>
+      <div class="flex p-4 mb-4 text-sm rounded-lg text-white" role="alert">
+        <div>
+          <h3 class="mb-5 text-lg font-normal">
+            The following user have been created:
+          </h3>
+          <div class="mt-1.5">
+            <p>Email: [[${user.email}]]</p>
+            <p>Password: [[${user.password}]]</p>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        onclick="location.reload();"
+        class="text-white text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 font-medium rounded-lg text-sm inline-flex items-center px-7 py-2.5 text-center"
+      >
+        OK
+      </button>
+    </div>
+  </div>
+</div>

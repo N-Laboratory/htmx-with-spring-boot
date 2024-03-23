@@ -207,7 +207,7 @@ public class UserController {
     userService.createUser(user);
 
     model.addAttribute("user", user);
-    return "result";
+    return "modal/createResult";
   }
 
   /**
