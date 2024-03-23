@@ -52,6 +52,13 @@ public class UserController {
     return "modal/create";
   }
 
+  @GetMapping(value = "/modal/edit")
+  public String showEditModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
+    User user = userService.getUser(id);
+    model.addAttribute("user", user);
+    return "modal/edit";
+  }
+
   @GetMapping(value = "/modal/delete")
   public String showDeleteModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
     User user = userService.getUser(id);
@@ -59,7 +66,7 @@ public class UserController {
     return "modal/delete";
   }
 
-    /**
+  /**
    * Search all user.
    *
    * @return user table
@@ -262,8 +269,8 @@ public class UserController {
       }
   )
   @PutMapping(value = "/user", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public UserResponse update(@RequestBody @Validated UserUpdateRequest request,
-      BindingResult result)
+  public String update(@RequestBody @Validated UserUpdateRequest request,
+      BindingResult result, Model model)
       throws Exception {
     if (result.hasErrors()) {
       throw new InvalidParameterException(
@@ -272,8 +279,10 @@ public class UserController {
 
     User user = userService.getUser(request.getId());
     userService.updateUser(user, request);
+    model.addAttribute("user", user);
+    model.addAttribute("message", "The following user edits have been completed:");
 
-    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), user.isDelFlg());
+    return "modal/result";
   }
 
   /**

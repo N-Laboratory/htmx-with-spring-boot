@@ -28,8 +28,4 @@ public class UserUpdateRequest {
   @Schema(description = "User password", example = "password")
   @NotBlank
   private String password;
-
-  @Schema(description = "User delete flag", example = "false")
-  @NotNull
-  private boolean delFlg;
 }

@@ -44,7 +44,6 @@ public class UserServiceImpl implements UserService {
   public void updateUser(User user, UserUpdateRequest request) throws Exception {
     user.setEmail(request.getEmail());
     user.setPassword(request.getPassword());
-    user.setDelFlg(request.isDelFlg());
 
     boolean isSuccess = userMapper.update(user);
     if (!isSuccess) {

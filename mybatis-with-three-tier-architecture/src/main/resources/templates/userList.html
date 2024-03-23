@@ -97,11 +97,18 @@
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         ></td>
         <td class="w-1/12 px-6 py-4 text-right">
-          <a
-            href="#"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >Edit</a
+          <form
+            hx-get="http://localhost:8080/api/v1/modal/edit"
+            hx-target="#edit-modal"
           >
+            <input type="hidden" name="id" th:value="${user.id}" />
+            <button
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              onclick="new Modal(document.getElementById('edit-modal'),{ backdrop:'static'}).show();"
+            >
+              Edit
+            </button>
+          </form>
         </td>
         <td class="w-1/12 px-6 py-4 text-right">
           <form
