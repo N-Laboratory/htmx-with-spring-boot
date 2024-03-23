@@ -1,4 +1,4 @@
-<div class="relative p-4 w-full max-w-md max-h-full">
+<div id="delete-modal-content" class="relative p-4 w-full max-w-md max-h-full">
   <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
     <div class="p-4 md:p-5 text-center">
       <svg
@@ -23,21 +23,23 @@
         <p>Email: [[${user.email}]]</p>
         <p>Password: [[${user.password}]]</p>
       </div>
-      <form hx-delete="http://localhost:8080/api/v1/user">
-        <input type="hidden" name="id" th:value="${user.id}" />
+      <form hx-delete="http://localhost:8080/api/v1/user"
+            hx-target="#delete-modal-content"
+            class="inline">
+        <input type="hidden" name="id" th:value="${user.id}"/>
         <button
           data-modal-hide="popup-modal"
           class="w-20 text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center pl-8 py-2.5 text-center"
         >
           OK
         </button>
-        <button
-          onclick="location.reload();"
-          class="w-20 py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-        >
-          Cancel
-        </button>
       </form>
+      <button
+        onclick="location.reload();"
+        class="w-20 py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+      >
+        Cancel
+      </button>
     </div>
   </div>
 </div>

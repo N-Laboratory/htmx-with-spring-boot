@@ -312,17 +312,18 @@ public class UserController {
       }
   )
   @DeleteMapping(value = "/user")
-  public UserResponse delete(@Parameter(
+  public String delete(@Parameter(
       name = "id",
       description = "User id for user deletion.",
       schema = @Schema(example = "1"),
       in = ParameterIn.QUERY,
       required = true
-  ) @RequestParam(name = "id") Long id)
-      throws Exception {
+  ) @RequestParam(name = "id") Long id, Model model) throws Exception {
     User user = userService.getUser(id);
     userService.deleteUser(user.getId());
+    model.addAttribute("user", user);
+    model.addAttribute("message", "The following user have been deleted:");
 
-    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), true);
+    return "modal/result";
   }
 }
