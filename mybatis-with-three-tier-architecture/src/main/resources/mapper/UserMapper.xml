@@ -10,15 +10,13 @@
     select * from user where id = #{id}
   </select>
   <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    insert into user (email, password, created_at, updated_at, del_flg)
-    values (#{email}, #{password}, #{createdAt}, null, 0)
+    insert into user (email, password)
+    values (#{email}, #{password})
   </insert>
   <update id="update" keyProperty="id">
     update user set
     email = #{email},
-    password = #{password},
-    updated_at = #{updatedAt},
-    del_flg = #{delFlg}
+    password = #{password}
     where id = #{id}
   </update>
   <delete id="delete">

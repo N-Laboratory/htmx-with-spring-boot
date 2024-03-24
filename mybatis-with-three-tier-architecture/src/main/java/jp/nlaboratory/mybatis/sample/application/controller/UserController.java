@@ -154,7 +154,7 @@ public class UserController {
       throws Exception {
     User user = userService.getUser(id);
 
-    return new UserResponse(user.getId(), user.getEmail(), user.getPassword(), user.isDelFlg());
+    return new UserResponse(user.getId(), user.getEmail(), user.getPassword());
   }
 
   /**
@@ -209,8 +209,7 @@ public class UserController {
     }
 
     User user =
-        new User(null, request.getEmail(), request.getPassword(), LocalDateTime.now(), null,
-            false);
+        new User(null, request.getEmail(), request.getPassword());
     userService.createUser(user);
 
       model.addAttribute("user", user);

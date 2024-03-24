@@ -22,13 +22,4 @@ public class User {
 
   @Schema(description = "User password", example = "password")
   private String password;
-
-  @Schema(description = "Time the user was created", example = "2023/10/10 10:10:10")
-  private LocalDateTime createdAt;
-
-  @Schema(description = "Time the user was updated", example = "2023/12/31 23:59:59")
-  private LocalDateTime updatedAt;
-
-  @Schema(description = "User delete flag", example = "false")
-  private boolean delFlg;
 }

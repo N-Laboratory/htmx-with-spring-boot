@@ -21,7 +21,4 @@ public class UserResponse {
 
   @Schema(description = "User password", example = "password")
   private String password;
-
-  @Schema(description = "User delete flag", example = "false")
-  private Boolean delFlg;
 }
