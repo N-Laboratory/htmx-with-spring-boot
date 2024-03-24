@@ -109,55 +109,6 @@ public class UserController {
   }
 
   /**
-   * Search user.
-   *
-   * @param id User id
-   * @return UserResponse (id, email, password, delFlg)
-   */
-  @Operation(
-      summary = "Get user data.",
-      description = "Get user data from MySQL DB using MyBatis."
-  )
-  @ApiResponses(
-      value = {
-          @ApiResponse(responseCode = "200", description = "Success.",
-              content = {
-                  @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                      schema = @Schema(implementation = UserResponse.class)
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "404", description = "User not found.",
-              content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "User not found. User id = 1.")
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "500", description = "Internal Server Error.",
-              content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "An unexpected error has occurred. "
-                          + "Some error message..."))
-              }
-          )
-      }
-  )
-  @GetMapping(value = "/user")
-  public UserResponse search(@Parameter(
-      name = "id",
-      description = "User id for user search.",
-      schema = @Schema(example = "1"),
-      in = ParameterIn.QUERY,
-      required = true
-  ) @RequestParam(name = "id") Long id)
-      throws Exception {
-    User user = userService.getUser(id);
-
-    return new UserResponse(user.getId(), user.getEmail(), user.getPassword());
-  }
-
-  /**
    * Create user.
    *
    * @param request UserCreateRequest (email, password)
