@@ -1,13 +1,10 @@
-drop table if exists user;
+DROP TABLE IF EXISTS user;
 
-create table user (
-  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  email varchar(255) NOT NULL,
-  password varchar(255) NOT NULL,
-  created_at datetime NOT NULL,
-  updated_at datetime,
-  del_flg tinyint(1) DEFAULT 0 NOT NULL,
-  primary key(id)
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at DATE NOT NULL,
+  updated_at DATE,
+  del_flg BOOLEAN DEFAULT FALSE NOT NULL
 );
-
-insert into user values (1, 'johnsmisth@test.com', 'password', '2023-12-05 10:10:10+09:00', NULL, 0)
