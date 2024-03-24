@@ -117,6 +117,7 @@
             hx-target="#edit-modal"
           >
             <input type="hidden" name="id" th:value="${user.id}" />
+            <!-- data-modal-show does not work, so I use new Modal().show() instead. -->
             <button
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               onclick="new Modal(document.getElementById('edit-modal'),{ backdrop:'static'}).show();"
@@ -131,22 +132,13 @@
             hx-target="#delete-modal"
           >
             <input type="hidden" name="id" th:value="${user.id}" />
+            <!-- data-modal-show does not work, so I use new Modal().show() instead. -->
             <button
               class="text-orange-800 font-medium hover:underline"
               onclick="new Modal(document.getElementById('delete-modal'),{ backdrop:'static'}).show();"
             >
               Delete
             </button>
-            <!-- data-modal-show does not work.
-            <button
-              hx-get="http://localhost:8080/api/v1/modal/delete"
-              hx-trigger="click"
-              hx-target="#delete-modal"
-              data-modal-target="delete-modal"
-              data-modal-show="delete-modal"
-              class="text-orange-800 font-medium hover:underline">Delete
-            </button>
-             -->
           </form>
         </td>
       </tr>
