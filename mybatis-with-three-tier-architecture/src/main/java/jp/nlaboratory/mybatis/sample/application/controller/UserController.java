@@ -47,11 +47,25 @@ public class UserController {
     this.messageService = messageService;
   }
 
+  /**
+   * show user create modal.
+   *
+   * @param model model
+   * @return user create modal html
+   * @throws Exception exception
+   */
   @GetMapping(value = "/modal/create")
   public String showCreateModal(Model model) throws Exception {
     return "modal/create";
   }
 
+  /**
+   * show user edit modal.
+   *
+   * @param model model
+   * @return user edit modal html
+   * @throws Exception exception
+   */
   @GetMapping(value = "/modal/edit")
   public String showEditModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
     User user = userService.getUser(id);
@@ -59,6 +73,13 @@ public class UserController {
     return "modal/edit";
   }
 
+  /**
+   * show user delete modal.
+   *
+   * @param model model
+   * @return user delete modal html
+   * @throws Exception exception
+   */
   @GetMapping(value = "/modal/delete")
   public String showDeleteModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
     User user = userService.getUser(id);
