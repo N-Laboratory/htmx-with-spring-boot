@@ -68,8 +68,7 @@ public class UserController {
    */
   @GetMapping(value = "/modal/edit")
   public String showEditModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
-    User user = userService.getUser(id);
-    model.addAttribute("user", user);
+    model.addAttribute("user", userService.getUser(id));
     return "modal/edit";
   }
 
@@ -82,8 +81,7 @@ public class UserController {
    */
   @GetMapping(value = "/modal/delete")
   public String showDeleteModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
-    User user = userService.getUser(id);
-    model.addAttribute("user", user);
+    model.addAttribute("user", userService.getUser(id));
     return "modal/delete";
   }
 
