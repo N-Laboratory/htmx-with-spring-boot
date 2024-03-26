@@ -8,8 +8,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.time.LocalDateTime;
-import java.util.List;
 
 import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserCreateRequest;
@@ -45,44 +43,6 @@ public class UserController {
   public UserController(UserService userService, MessageService messageService) {
     this.userService = userService;
     this.messageService = messageService;
-  }
-
-  /**
-   * show user create modal.
-   *
-   * @param model model
-   * @return user create modal html
-   * @throws Exception exception
-   */
-  @GetMapping(value = "/modal/create")
-  public String showCreateModal(Model model) throws Exception {
-    return "modal/create";
-  }
-
-  /**
-   * show user edit modal.
-   *
-   * @param model model
-   * @return user edit modal html
-   * @throws Exception exception
-   */
-  @GetMapping(value = "/modal/edit")
-  public String showEditModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
-    model.addAttribute("user", userService.getUser(id));
-    return "modal/edit";
-  }
-
-  /**
-   * show user delete modal.
-   *
-   * @param model model
-   * @return user delete modal html
-   * @throws Exception exception
-   */
-  @GetMapping(value = "/modal/delete")
-  public String showDeleteModal(@RequestParam(name = "id") Long id, Model model) throws Exception {
-    model.addAttribute("user", userService.getUser(id));
-    return "modal/delete";
   }
 
   /**
