@@ -9,6 +9,10 @@ plugins {
 group = 'jp.n-laboratory'
 version = '0.0.1-SNAPSHOT'
 
+bootJar {
+    archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+}
+
 java {
     sourceCompatibility = '21'
 }
