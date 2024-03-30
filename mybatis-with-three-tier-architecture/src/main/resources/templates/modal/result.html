@@ -22,12 +22,13 @@
         <div>
           <h3 class="mb-5 text-lg font-normal" th:text="${message}"></h3>
           <div class="mt-1.5">
-            <p>Email: [[${user.email}]]</p>
-            <p>Password: [[${user.password}]]</p>
+            <p data-testid="email-text">Email: [[${user.email}]]</p>
+            <p data-testid="password-text">Password: [[${user.password}]]</p>
           </div>
         </div>
       </div>
       <button
+        data-testid="result-btn"
         type="button"
         onclick="location.reload();"
         class="text-white text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 font-medium rounded-lg text-sm inline-flex items-center px-7 py-2.5 text-center"

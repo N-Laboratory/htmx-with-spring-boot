@@ -62,7 +62,10 @@
       </svg>
       <span class="sr-only">Loading...</span>
     </div>
-    <div class="text-center text-white pt-10 sm:pt-12 mb-4 md:mb-10">
+    <div
+      data-testid="page-title"
+      class="text-center text-white pt-10 sm:pt-12 mb-4 md:mb-10"
+    >
       <h1 class="text-2xl font-bold lg:text-3xl">User List</h1>
       <p class="pt-3">Sample project with HTMX + Spring Boot + TailwindCSS.</p>
       <p>You can create/edit/delete user.</p>
@@ -76,6 +79,7 @@
         hx-trigger="load"
       ></div>
       <button
+        data-testid="create-btn"
         hx-get="http://localhost:8080/api/v1/modal/create"
         hx-trigger="click"
         hx-target="#create-modal"

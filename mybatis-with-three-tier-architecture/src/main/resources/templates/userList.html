@@ -1,5 +1,6 @@
 <th:block th:if="${#lists.isEmpty(users)}">
   <div
+    data-testid="empty-user-list"
     class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
     role="alert"
   >
@@ -100,14 +101,17 @@
     <tbody>
       <tr
         th:each="user : ${users}"
+        th:data-testid="${user.id}"
         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
       >
         <td
+          data-testid="td-email"
           th:text="${user.email}"
           scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         ></td>
         <td
+          data-testid="td-password"
           th:text="${user.password}"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         ></td>
@@ -119,6 +123,7 @@
             <input type="hidden" name="id" th:value="${user.id}" />
             <!-- data-modal-show does not work, so I use new Modal().show() instead. -->
             <button
+              data-testid="edit-btn"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               onclick="new Modal(document.getElementById('edit-modal'),{ backdrop:'static'}).show();"
             >
@@ -134,6 +139,7 @@
             <input type="hidden" name="id" th:value="${user.id}" />
             <!-- data-modal-show does not work, so I use new Modal().show() instead. -->
             <button
+              data-testid="delete-btn"
               class="text-orange-800 font-medium hover:underline"
               onclick="new Modal(document.getElementById('delete-modal'),{ backdrop:'static'}).show();"
             >
