@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "format": "prettier --write ./src/**/*.html",
+    "format": "prettier --write ./**/*.{html,ts}",
     "format:be": "prettier --write ../mybatis-with-three-tier-architecture/src/main/resources/templates/**/*.html",
     "test": "vitest"
   },
