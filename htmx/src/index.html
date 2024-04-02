@@ -14,17 +14,17 @@
       rel="stylesheet"
     />
     <script type="text/javascript">
-      htmx.defineExtension("json-enc", {
+      htmx.defineExtension('json-enc', {
         onEvent: function (name, evt) {
-          if (name === "htmx:configRequest") {
-            evt.detail.headers["Content-Type"] = "application/json";
+          if (name === 'htmx:configRequest') {
+            evt.detail.headers['Content-Type'] = 'application/json'
           }
         },
         encodeParameters: function (xhr, parameters, elt) {
-          xhr.overrideMimeType("text/json");
-          return JSON.stringify(parameters);
+          xhr.overrideMimeType('text/json')
+          return JSON.stringify(parameters)
         },
-      });
+      })
     </script>
     <style>
       .htmx-indicator {
@@ -62,17 +62,12 @@
       </svg>
       <span class="sr-only">Loading...</span>
     </div>
-    <div
-      data-testid="page-title"
-      class="text-center text-white pt-10 sm:pt-12 mb-4 md:mb-10"
-    >
+    <div data-testid="page-title" class="text-center text-white pt-10 sm:pt-12 mb-4 md:mb-10">
       <h1 class="text-2xl font-bold lg:text-3xl">User List</h1>
       <p class="pt-3">Sample project with HTMX + Spring Boot + TailwindCSS.</p>
       <p>You can create/edit/delete user.</p>
     </div>
-    <div
-      class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto max-w-screen-md"
-    >
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto max-w-screen-md">
       <div
         hx-get="http://localhost:8080/api/v1/users"
         hx-indicator="#indicator"
