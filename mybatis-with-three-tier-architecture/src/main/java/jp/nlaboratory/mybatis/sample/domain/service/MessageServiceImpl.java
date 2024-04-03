@@ -30,9 +30,13 @@ public class MessageServiceImpl implements MessageService {
 
     for (FieldError error : errorList) {
       String field = error.getField();
-      // replace {0} in ValidationMessages with field name
+
+      // replace {0} in ValidationMessages.properties with field name
       String message = messageSource.getMessage(error, Locale.getDefault());
-      errorMap.put(field, message);
+      String errorMessage =
+          message.substring(message.indexOf("default message") + "default message".length() + 1);
+
+      errorMap.put(field, errorMessage);
     }
 
     return mapper.writeValueAsString(errorMap);
