@@ -1,7 +1,6 @@
 package jp.nlaboratory.mybatis.sample.domain.service;
 
 import java.util.List;
-
 import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
 

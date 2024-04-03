@@ -1,12 +1,10 @@
 package jp.nlaboratory.mybatis.sample.domain.service;
 
+import java.util.List;
 import jp.nlaboratory.mybatis.sample.application.exception.DataNotFoundException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
 import jp.nlaboratory.mybatis.sample.infrastructure.mapper.UserMapper;
-
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 /**

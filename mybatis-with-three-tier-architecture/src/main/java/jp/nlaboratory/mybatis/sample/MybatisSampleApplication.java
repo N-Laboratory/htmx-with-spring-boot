@@ -34,6 +34,9 @@ public class MybatisSampleApplication {
     SpringApplication.run(MybatisSampleApplication.class, args);
   }
 
+  /**
+   * CORS configure.
+   */
   @Bean
   public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
@@ -45,5 +48,4 @@ public class MybatisSampleApplication {
       }
     };
   }
-
 }

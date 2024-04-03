@@ -1,7 +1,6 @@
 package jp.nlaboratory.mybatis.sample.domain.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
