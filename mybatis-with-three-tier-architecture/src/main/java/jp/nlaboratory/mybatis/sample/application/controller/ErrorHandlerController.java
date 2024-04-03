@@ -5,16 +5,10 @@ import jp.nlaboratory.mybatis.sample.application.exception.DataNotFoundException
 import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.MyBatisSystemException;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
