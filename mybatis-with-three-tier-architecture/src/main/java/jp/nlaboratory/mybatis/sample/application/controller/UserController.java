@@ -4,14 +4,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
 import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserCreateRequest;
-import jp.nlaboratory.mybatis.sample.domain.dto.UserResponse;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
 import jp.nlaboratory.mybatis.sample.domain.service.MessageService;
@@ -39,6 +38,116 @@ public class UserController {
 
   private final UserService userService;
   private final MessageService messageService;
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String USER_FOUND = """
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>test@test.com</td>
+            <td>test</td>
+            <td><button>Edit</button></td>
+            <td><button>Delete</button></td>
+          </tr>
+        </tbody>
+      </table>""";
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String USER_NOT_FOUND = """
+      <div>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium">User not found!</span> Please create new user.
+        </div>
+      </div>""";
+
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String ERROR = """
+      <div>
+        <div>
+          <div>
+            <h3>An unexpected error occurred.</h3>
+          </div>
+        </div>
+        <button>OK</button>
+      </div>""";
+
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String User_NOT_FOUND_ERROR = """
+      <div>
+        <div>
+          <div>
+            <h3>User not found.</h3>
+          </div>
+        </div>
+        <button>OK</button>
+      </div>""";
+
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String GET_RESULT = """
+      <div>
+        <div>
+          <div>
+            <h3>The following user was found:</h3>
+            <div>
+              <p>Email: test@test.com</p>
+              <p>Password: test</p>
+            </div>
+          </div>
+        </div>
+        <button>OK</button>
+      </div>""";
+
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String CREATE_RESULT = """
+      <div>
+        <div>
+          <div>
+            <h3>The following user have been created:</h3>
+            <div>
+              <p>Email: test@test.com</p>
+              <p>Password: test</p>
+            </div>
+          </div>
+        </div>
+        <button>OK</button>
+      </div>""";
+
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String UPDATE_RESULT = """
+      <div>
+        <div>
+          <div>
+            <h3>The following user edits have been completed:</h3>
+            <div>
+              <p>Email: test@test.com</p>
+              <p>Password: test</p>
+            </div>
+          </div>
+        </div>
+        <button>OK</button>
+      </div>""";
+
+  @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
+  private final String DELETE_RESULT = """
+      <div>
+        <div>
+          <div>
+            <h3>The following user have been deleted:</h3>
+            <div>
+              <p>Email: test@test.com</p>
+              <p>Password: test</p>
+            </div>
+          </div>
+        </div>
+        <button>OK</button>
+      </div>""";
 
   public UserController(UserService userService, MessageService messageService) {
     this.userService = userService;
@@ -52,29 +161,23 @@ public class UserController {
    */
   @Operation(
       summary = "Get all user data.",
-      description = "Get all user data from MySQL DB using MyBatis."
+      description = "Get all user data to display user table."
   )
   @ApiResponses(
       value = {
           @ApiResponse(responseCode = "200", description = "Success.",
               content = {
-                  @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                      schema = @Schema(implementation = UserResponse.class)
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "404", description = "User not found.",
-              content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "User not found. User id = 1.")
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "user found", value = USER_FOUND),
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND)}
                   )
               }
           ),
           @ApiResponse(responseCode = "500", description = "Internal Server Error.",
               content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "An unexpected error has occurred. "
-                          + "Some error message..."))
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "error", value = ERROR)}
+                  )
               }
           )
       }
@@ -91,33 +194,34 @@ public class UserController {
    * Search user.
    *
    * @param id User id
-   * @return UserResponse (id, email, password, delFlg)
+   * @return result modal
    */
   @Operation(
       summary = "Get user data.",
-      description = "Get user data from MySQL DB using MyBatis."
+      description = "Display user info in result modal."
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "Success.",
+          @ApiResponse(responseCode = "200", description = "User found.",
               content = {
-                  @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                      schema = @Schema(implementation = UserResponse.class)
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "user found", value = GET_RESULT)}
                   )
               }
           ),
           @ApiResponse(responseCode = "404", description = "User not found.",
               content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "User not found. User id = 1.")
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {
+                          @ExampleObject(name = "user not found", value = User_NOT_FOUND_ERROR)}
                   )
               }
           ),
           @ApiResponse(responseCode = "500", description = "Internal Server Error.",
               content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "An unexpected error has occurred. "
-                          + "Some error message..."))
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "error", value = ERROR)}
+                  )
               }
           )
       }
@@ -143,33 +247,34 @@ public class UserController {
    * Create user.
    *
    * @param request UserCreateRequest (email, password)
-   * @return UserResponse (id, email, password, delFlg)
+   * @return result modal
    */
   @Operation(
       summary = "Create user data.",
-      description = "Insert user data into MySQL DB using MyBatis."
+      description = "Display created user info in result modal."
   )
   @ApiResponses(
       value = {
           @ApiResponse(responseCode = "200", description = "Success.",
               content = {
-                  @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                      schema = @Schema(implementation = UserResponse.class)
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {
+                          @ExampleObject(name = "user creation succeeded", value = CREATE_RESULT)}
                   )
               }
           ),
           @ApiResponse(responseCode = "400", description = "Invalid request parameter.",
               content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "Request parameter is invalid.\n"
-                          + "{\"password\":\"password is required.\"}"))
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "invalid parameter", value = ERROR)}
+                  )
               }
           ),
           @ApiResponse(responseCode = "500", description = "Internal server error.",
               content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "An unexpected error has occurred. "
-                          + "Some error message..."))
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "error", value = ERROR)}
+                  )
               }
           )
       }
@@ -194,8 +299,8 @@ public class UserController {
         new User(null, request.getEmail(), request.getPassword());
     userService.createUser(user);
 
-      model.addAttribute("user", user);
-      model.addAttribute("message", "The following user have been created:");
+    model.addAttribute("user", user);
+    model.addAttribute("message", "The following user have been created:");
 
     return "modal/result";
   }
@@ -204,40 +309,42 @@ public class UserController {
    * Update user.
    *
    * @param request UserUpdateRequest (id, email, password, delFlg)
-   * @return UserResponse (id, email, password, delFlg)
+   * @return result modal
    */
   @Operation(
       summary = "Update user data.",
-      description = "Update user data in MySQL DB using MyBatis."
+      description = "Display updated user info in result modal."
   )
   @ApiResponses(
       value = {
           @ApiResponse(responseCode = "200", description = "Success.",
               content = {
-                  @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                      schema = @Schema(implementation = UserResponse.class)
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {
+                          @ExampleObject(name = "user update succeeded", value = UPDATE_RESULT)}
                   )
               }
           ),
           @ApiResponse(responseCode = "400", description = "Invalid request parameter.",
               content = {
-                  @Content(mediaType = MediaType.TEXT_PLAIN_VALUE,
-                      schema = @Schema(example = "Request parameter is invalid.\n"
-                          + "{\"password\":\"password is required.\"}"))
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "invalid parameter", value = ERROR)}
+                  )
               }
           ),
           @ApiResponse(responseCode = "404", description = "User not found.",
               content = {
-                  @Content(mediaType = "text/plan",
-                      schema = @Schema(example = "User not found. User id = 1")
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {
+                          @ExampleObject(name = "user not found", value = User_NOT_FOUND_ERROR)}
                   )
               }
           ),
           @ApiResponse(responseCode = "500", description = "Internal server error.",
               content = {
-                  @Content(mediaType = MediaType.TEXT_PLAIN_VALUE,
-                      schema = @Schema(example = "An unexpected error has occurred. "
-                          + "Some error message..."))
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "error", value = ERROR)}
+                  )
               }
           )
       }
@@ -260,6 +367,7 @@ public class UserController {
 
     User user = userService.getUser(request.getId());
     userService.updateUser(user, request);
+
     model.addAttribute("user", user);
     model.addAttribute("message", "The following user edits have been completed:");
 
@@ -270,33 +378,35 @@ public class UserController {
    * Delete user.
    *
    * @param id User id
-   * @return UserResponse (id, email, password, delFlg)
+   * @return result modal
    */
   @Operation(
       summary = "Delete user data.",
-      description = "Delete user data in MySQL DB using MyBatis."
+      description = "Display deleted user info in result modal."
   )
   @ApiResponses(
       value = {
           @ApiResponse(responseCode = "200", description = "Success.",
               content = {
-                  @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                      schema = @Schema(implementation = UserResponse.class)
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {
+                          @ExampleObject(name = "user deletion succeeded", value = DELETE_RESULT)}
                   )
               }
           ),
           @ApiResponse(responseCode = "404", description = "User not found.",
               content = {
-                  @Content(mediaType = MediaType.TEXT_PLAIN_VALUE,
-                      schema = @Schema(example = "User not found. User id = 1")
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {
+                          @ExampleObject(name = "user not found", value = User_NOT_FOUND_ERROR)}
                   )
               }
           ),
           @ApiResponse(responseCode = "500", description = "Internal server error.",
               content = {
-                  @Content(mediaType = MediaType.TEXT_PLAIN_VALUE,
-                      schema = @Schema(example = "An unexpected error has occurred. "
-                          + "Some error message..."))
+                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      examples = {@ExampleObject(name = "error", value = ERROR)}
+                  )
               }
           )
       }
@@ -311,6 +421,7 @@ public class UserController {
   ) @RequestParam(name = "id") Long id, Model model) throws Exception {
     User user = userService.getUser(id);
     userService.deleteUser(user.getId());
+
     model.addAttribute("user", user);
     model.addAttribute("message", "The following user have been deleted:");
 
