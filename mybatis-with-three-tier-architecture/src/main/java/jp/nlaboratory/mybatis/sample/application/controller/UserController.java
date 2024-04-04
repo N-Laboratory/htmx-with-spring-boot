@@ -79,7 +79,7 @@ public class UserController {
       </div>""";
 
   @SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MemberName"})
-  private final String User_NOT_FOUND_ERROR = """
+  private final String USER_NOT_FOUND_ERROR = """
       <div>
         <div>
           <div>
@@ -213,7 +213,7 @@ public class UserController {
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
                       examples = {
-                          @ExampleObject(name = "user not found", value = User_NOT_FOUND_ERROR)}
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
                   )
               }
           ),
@@ -336,7 +336,7 @@ public class UserController {
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
                       examples = {
-                          @ExampleObject(name = "user not found", value = User_NOT_FOUND_ERROR)}
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
                   )
               }
           ),
@@ -398,7 +398,7 @@ public class UserController {
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
                       examples = {
-                          @ExampleObject(name = "user not found", value = User_NOT_FOUND_ERROR)}
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
                   )
               }
           ),
