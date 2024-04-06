@@ -295,8 +295,10 @@ public class UserController {
           messageService.convertFieldErrorMsgListToJson(result.getFieldErrors()));
     }
 
-    User user =
-        new User(null, request.getEmail(), request.getPassword());
+    User user = User.builder()
+        .email(request.getEmail())
+        .password((request.getPassword()))
+        .build();
     userService.createUser(user);
 
     model.addAttribute("user", user);

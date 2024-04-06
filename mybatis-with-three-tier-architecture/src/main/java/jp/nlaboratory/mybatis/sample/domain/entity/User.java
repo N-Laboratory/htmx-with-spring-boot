@@ -1,16 +1,20 @@
 package jp.nlaboratory.mybatis.sample.domain.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Entity for user data.
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 public class User {
 
   @Schema(description = "User id", example = "1")
