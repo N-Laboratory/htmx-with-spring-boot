@@ -23,8 +23,14 @@
       </svg>
       <div class="p-4 mb-4 text-sm rounded-lg text-white" role="alert">
         <div>
-          <h3 class="text-lg font-normal" th:if="${#strings.isEmpty(errorMsg)}">An unexpected error occurred.</h3>
-          <h3 class="text-lg font-normal" th:unless="${#strings.isEmpty(errorMsg)}" th:text="${errorMsg}"></h3>
+          <h3 class="text-lg font-normal" th:if="${#strings.isEmpty(errorMsg)}">
+            An unexpected error occurred.
+          </h3>
+          <h3
+            class="text-lg font-normal"
+            th:unless="${#strings.isEmpty(errorMsg)}"
+            th:text="${errorMsg}"
+          ></h3>
         </div>
       </div>
       <button
