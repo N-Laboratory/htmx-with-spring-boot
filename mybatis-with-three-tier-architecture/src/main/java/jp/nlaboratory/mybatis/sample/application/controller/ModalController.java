@@ -3,6 +3,7 @@ package jp.nlaboratory.mybatis.sample.application.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -123,16 +124,18 @@ public class ModalController {
    * @return user creation modal
    */
   @Operation(
-      summary = "show user creation modal."
+      summary = "Show user creation modal."
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "show user creation modal.",
+          @ApiResponse(responseCode = "200", description = "Show user creation modal.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      schema = @Schema(oneOf = {String.class, String.class}),
                       examples = {
-                          @ExampleObject(name = "show modal",
-                              description = "show user creation modal", value = CREATE_MODAL)}
+                          @ExampleObject(name = "show modal", value = CREATE_MODAL),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
@@ -151,34 +154,22 @@ public class ModalController {
    * @throws Exception exception
    */
   @Operation(
-      summary = "show user edit modal."
+      summary = "Show user edit modal."
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "show user edit modal.",
+          @ApiResponse(responseCode = "200", description = "Show user edit modal.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      schema = @Schema(oneOf = {String.class, String.class, String.class}),
                       examples = {
-                          @ExampleObject(name = "show modal",
-                              description = "show user edit modal", value = EDIT_MODAL)}
+                          @ExampleObject(name = "show modal", value = EDIT_MODAL),
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
-          @ApiResponse(responseCode = "404", description = "User not found.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {
-                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "500", description = "Internal Server Error.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "error", value = ERROR)}
-                  )
-              }
-          )
       }
   )
   @GetMapping(value = "/edit")
@@ -195,34 +186,22 @@ public class ModalController {
    * @throws Exception exception
    */
   @Operation(
-      summary = "show user deletion modal."
+      summary = "Show user deletion modal."
   )
   @ApiResponses(
       value = {
           @ApiResponse(responseCode = "200", description = "Show user deletion modal.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      schema = @Schema(oneOf = {String.class, String.class, String.class}),
                       examples = {
-                          @ExampleObject(name = "show modal",
-                              description = "show user deletion modal", value = DELETE_MODAL)}
+                          @ExampleObject(name = "show modal", value = DELETE_MODAL),
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
-          @ApiResponse(responseCode = "404", description = "User not found.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {
-                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "500", description = "Internal Server Error.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "error", value = ERROR)}
-                  )
-              }
-          )
       }
   )
   @GetMapping(value = "/delete")

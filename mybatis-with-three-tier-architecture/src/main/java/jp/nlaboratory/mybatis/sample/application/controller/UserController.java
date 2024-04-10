@@ -165,21 +165,18 @@ public class UserController {
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "Success.",
+          @ApiResponse(responseCode = "200", description = "Display user list.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "user found", value = USER_FOUND),
-                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND)}
+                      schema = @Schema(oneOf = {String.class, String.class, String.class}),
+                      examples = {
+                          @ExampleObject(name = "user found", value = USER_FOUND),
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
-          @ApiResponse(responseCode = "500", description = "Internal Server Error.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "error", value = ERROR)}
-                  )
-              }
-          )
       }
   )
   @GetMapping(value = "/users")
@@ -202,28 +199,18 @@ public class UserController {
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "User found.",
+          @ApiResponse(responseCode = "200", description = "Display user info in result modal.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "user found", value = GET_RESULT)}
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "404", description = "User not found.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      schema = @Schema(oneOf = {String.class, String.class, String.class}),
                       examples = {
-                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
+                          @ExampleObject(name = "user found", value = GET_RESULT),
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
-          @ApiResponse(responseCode = "500", description = "Internal Server Error.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "error", value = ERROR)}
-                  )
-              }
-          )
       }
   )
   @GetMapping(value = "/user")
@@ -255,28 +242,19 @@ public class UserController {
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "Success.",
+          @ApiResponse(responseCode = "200",
+              description = "Display created user info in result modal.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      schema = @Schema(oneOf = {String.class, String.class, String.class}),
                       examples = {
-                          @ExampleObject(name = "user creation succeeded", value = CREATE_RESULT)}
+                          @ExampleObject(name = "user creation succeeded", value = CREATE_RESULT),
+                          @ExampleObject(name = "invalid parameter", value = ERROR),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
-          @ApiResponse(responseCode = "400", description = "Invalid request parameter.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "invalid parameter", value = ERROR)}
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "500", description = "Internal server error.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "error", value = ERROR)}
-                  )
-              }
-          )
       }
   )
   @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -319,36 +297,21 @@ public class UserController {
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "Success.",
+          @ApiResponse(responseCode = "200",
+              description = "Display updated user info in result modal.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      schema = @Schema(oneOf = {String.class, String.class, String.class,
+                          String.class}),
                       examples = {
-                          @ExampleObject(name = "user update succeeded", value = UPDATE_RESULT)}
+                          @ExampleObject(name = "user update succeeded", value = UPDATE_RESULT),
+                          @ExampleObject(name = "invalid parameter", value = ERROR),
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
-          @ApiResponse(responseCode = "400", description = "Invalid request parameter.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "invalid parameter", value = ERROR)}
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "404", description = "User not found.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {
-                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "500", description = "Internal server error.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "error", value = ERROR)}
-                  )
-              }
-          )
       }
   )
   @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -388,29 +351,19 @@ public class UserController {
   )
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "Success.",
+          @ApiResponse(responseCode = "200",
+              description = "Display deleted user info in result modal.",
               content = {
                   @Content(mediaType = MediaType.TEXT_HTML_VALUE,
+                      schema = @Schema(oneOf = {String.class, String.class, String.class}),
                       examples = {
-                          @ExampleObject(name = "user deletion succeeded", value = DELETE_RESULT)}
+                          @ExampleObject(name = "user deletion succeeded", value = DELETE_RESULT),
+                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR),
+                          @ExampleObject(name = "internal error", value = ERROR)
+                      }
                   )
               }
           ),
-          @ApiResponse(responseCode = "404", description = "User not found.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {
-                          @ExampleObject(name = "user not found", value = USER_NOT_FOUND_ERROR)}
-                  )
-              }
-          ),
-          @ApiResponse(responseCode = "500", description = "Internal server error.",
-              content = {
-                  @Content(mediaType = MediaType.TEXT_HTML_VALUE,
-                      examples = {@ExampleObject(name = "error", value = ERROR)}
-                  )
-              }
-          )
       }
   )
   @DeleteMapping(value = "/user")
