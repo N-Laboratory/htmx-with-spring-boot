@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ErrorHandlerController extends ResponseEntityExceptionHandler {
 
   /**
-   * Create HTTP response for DataNotFoundException.
+   * Handle DataNotFoundException.
    *
    * @param e DataNotFoundException
    * @return error page
@@ -33,7 +33,7 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
   }
 
   /**
-   * Create HTTP response for ConnectException, CannotGetJdbcConnectionException.
+   * Handle ConnectException, CannotGetJdbcConnectionException.
    *
    * @param e ConnectException or CannotGetJdbcConnectionException
    * @return error page
@@ -45,7 +45,7 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
   }
 
   /**
-   * Create HTTP response for MyBatisSystemException.
+   * Handle MyBatisSystemException.
    *
    * @param e MyBatisSystemException
    * @return error page
@@ -57,7 +57,7 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
   }
 
   /**
-   * Create HTTP response for InvalidParameterException.
+   * Handle InvalidParameterException.
    *
    * @param e InvalidParameterException
    * @return error page
@@ -69,7 +69,7 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
   }
 
   /**
-   * Create HTTP response for Exception.
+   * Handle Exception.
    *
    * @param e Exception
    * @return error page
@@ -81,7 +81,7 @@ public class ErrorHandlerController extends ResponseEntityExceptionHandler {
   }
 
   /**
-   * Create HTTP response for Exception.
+   * Handle Exception.
    *
    * @param e Exception
    * @return error page
