@@ -7,7 +7,8 @@
     "lint:fix": "npm run lint -- --fix",
     "start:fe": "npx serve",
     "start:be": "java -jar ../mybatis-with-three-tier-architecture/build/libs/mybatis.sample.jar",
-    "start": "run-p start:fe start:be"
+    "start": "run-p start:fe start:be",
+    "build:be": "cd ../mybatis-with-three-tier-architecture && gradlew bootJar"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.4.0",
