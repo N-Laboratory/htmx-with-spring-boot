@@ -1,6 +1,7 @@
 package jp.nlaboratory.mybatis.sample.application.controller;
 
 import java.net.ConnectException;
+import jp.nlaboratory.mybatis.sample.application.exception.DataBaseException;
 import jp.nlaboratory.mybatis.sample.application.exception.DataNotFoundException;
 import jp.nlaboratory.mybatis.sample.application.exception.InvalidParameterException;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,18 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 @Slf4j
 public class ErrorHandlerController extends ResponseEntityExceptionHandler {
+
+  /**
+   * Handle DataBaseException.
+   *
+   * @param e DataBaseException
+   * @return error page
+   */
+  @ExceptionHandler({DataBaseException.class})
+  public String handleDataBaseException(DataBaseException e, Model model) {
+    log.error("Error: {}", e.getMessage());
+    return "modal/error";
+  }
 
   /**
    * Handle DataNotFoundException.
