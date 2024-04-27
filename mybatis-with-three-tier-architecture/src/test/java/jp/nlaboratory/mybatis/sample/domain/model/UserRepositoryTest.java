@@ -38,7 +38,7 @@ public class UserRepositoryTest {
   @Test
   @DisplayName("should get all user.")
   @DatabaseSetup("/dataset/User_find_all.xml")
-  public void findAll() {
+  public void findAll() throws Exception {
     // Act
     List<User> userList = userRepository.findAll();
 
@@ -49,7 +49,7 @@ public class UserRepositoryTest {
   @Test
   @DisplayName("should get user by user id.")
   @DatabaseSetup("/dataset/User_find_by_id.xml")
-  public void findById() {
+  public void findById() throws Exception {
     // Arrange
     User expectedUser = User.builder()
         .id(2L)
@@ -69,7 +69,7 @@ public class UserRepositoryTest {
 
   @Test
   @DisplayName("should get true when create user.")
-  public void insert() {
+  public void insert() throws Exception {
     // Arrange
     User user = User.builder()
         .id(2L)
@@ -87,7 +87,7 @@ public class UserRepositoryTest {
   @Test
   @DisplayName("should get true when update user.")
   @DatabaseSetup("/dataset/User_update.xml")
-  public void update() {
+  public void update() throws Exception {
     // Arrange
     User user = User.builder()
         .id(1L)
@@ -105,7 +105,7 @@ public class UserRepositoryTest {
   @Test
   @DisplayName("should get true when delete user.")
   @DatabaseSetup("/dataset/User_delete.xml")
-  public void delete() {
+  public void delete() throws Exception {
     // Act
     boolean result = userRepository.delete(1L);
 

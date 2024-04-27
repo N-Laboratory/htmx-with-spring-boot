@@ -23,7 +23,7 @@ public class UserRepository {
    *
    * @return user list
    */
-  public List<User> findAll() {
+  public List<User> findAll() throws Exception {
     return userMapper.findAll();
   }
 
@@ -33,7 +33,7 @@ public class UserRepository {
    * @param id user id
    * @return user
    */
-  public Optional<User> findById(Long id) {
+  public Optional<User> findById(Long id) throws Exception {
     return userMapper.findById(id);
   }
 
@@ -42,7 +42,7 @@ public class UserRepository {
    *
    * @param user user info
    */
-  public boolean insert(User user) {
+  public boolean insert(User user) throws Exception {
     return userMapper.insert(user);
   }
 
@@ -51,7 +51,7 @@ public class UserRepository {
    *
    * @param user user info
    */
-  public boolean update(User user) {
+  public boolean update(User user) throws Exception {
     return userMapper.update(user);
   }
 
@@ -60,7 +60,7 @@ public class UserRepository {
    *
    * @param id user id
    */
-  public boolean delete(Long id) {
+  public boolean delete(Long id) throws Exception {
     return userMapper.delete(id);
   }
 }
