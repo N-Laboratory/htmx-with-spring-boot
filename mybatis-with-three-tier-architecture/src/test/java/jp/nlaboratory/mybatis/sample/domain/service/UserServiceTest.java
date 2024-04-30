@@ -8,58 +8,39 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
-import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import jp.nlaboratory.mybatis.sample.XmlDataLoader;
 import jp.nlaboratory.mybatis.sample.application.exception.DataBaseException;
 import jp.nlaboratory.mybatis.sample.application.exception.DataNotFoundException;
 import jp.nlaboratory.mybatis.sample.domain.dto.UserUpdateRequest;
 import jp.nlaboratory.mybatis.sample.domain.entity.User;
 import jp.nlaboratory.mybatis.sample.domain.model.UserRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
 
 @ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 @TestExecutionListeners({
     DependencyInjectionTestExecutionListener.class,
     DirtiesContextTestExecutionListener.class,
-    TransactionDbUnitTestExecutionListener.class
 })
-@Transactional
-@DbUnitConfiguration(dataSetLoader = XmlDataLoader.class)
 public class UserServiceTest {
 
   @InjectMocks
   private UserServiceImpl userService;
   @Mock()
   UserRepository userRepositoryMock;
-  private AutoCloseable closeable;
-
-  @BeforeEach
-  public void setUp() {
-    closeable = MockitoAnnotations.openMocks(this);
-  }
-
-  @AfterEach
-  public void tearDown() throws Exception {
-    closeable.close();
-  }
 
   @Test
   @DisplayName("should get all user.")
