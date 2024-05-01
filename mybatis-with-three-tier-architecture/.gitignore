@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Jacoco ###
+**/coverage/**/
+**/coverage/**/jacoco-sessions.html
+!**/coverage/**/index.html
