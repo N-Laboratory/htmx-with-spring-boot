@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "format": "prettier --write ./**/*.{html,ts}",
+    "format:fe": "prettier --write ./**/*.{html,ts}",
     "format:be": "prettier --write ../mybatis-with-three-tier-architecture/src/main/resources/templates/**/*.html",
     "test": "vitest",
     "lint": "eslint --ext \".js,.ts\" --ignore-path .gitignore .",
