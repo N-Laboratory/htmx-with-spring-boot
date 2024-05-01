@@ -38,5 +38,4 @@ out/
 
 ### Jacoco ###
 **/coverage/**/
-**/coverage/**/jacoco-sessions.html
-!**/coverage/**/index.html
+**/coverage/**/**.html
