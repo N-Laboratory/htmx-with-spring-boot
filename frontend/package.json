@@ -8,7 +8,7 @@
     "start:fe": "npx serve",
     "start:be": "java -jar ../backend/build/libs/mybatis.sample.jar",
     "start": "run-p start:fe start:be",
-    "build:be": "cd ../backend && gradlew bootJar"
+    "build:be": "cd ../backend && ./gradlew bootJar"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.4.0",
