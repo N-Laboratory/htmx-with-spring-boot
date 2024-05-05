@@ -15,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @OpenAPIDefinition(
     info = @Info(
-        title = "Spring Boot 3 with MyBatis",
+        title = "HTMX + Spring Boot with MyBatis",
         version = "1.0.0",
         description =
-            "Sample project for spring boot 3 with MyBatis. This project implement the following. "
+            "Sample project for HTMX + spring boot 3 with MyBatis. This project implement the following. "
                 + "Search/Create/Update/Delete user."
     ),
     servers = {
