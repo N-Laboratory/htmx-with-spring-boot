@@ -3,6 +3,7 @@
   <img src="https://img.shields.io/badge/-Htmx-grey.svg?logo=Htmx&style=flat">
   <img src="https://img.shields.io/badge/-Java-007396.svg?logo=Java&style=flat">
   <img src="https://img.shields.io/badge/-Spring Boot-lightyellow.svg?logo=Spring Boot&style=flat">
+  <img src="https://img.shields.io/badge/-MyBatis-grey.svg?logo=MyBatis&style=flat">
   <img src="https://img.shields.io/badge/-JUnit5-F36D00.svg?logo=JUnit5&style=flat">
   <img src="https://img.shields.io/badge/-TailWind CSS-white.svg?logo=tailwind css&style=flat">
   <img src="https://img.shields.io/badge/-Windows-0078D6.svg?logo=windows&style=flat">
