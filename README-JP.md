@@ -1,5 +1,6 @@
 <h1 align="center">HTMX + Spring Boot + TailwindCSS</h1>
 <p align="center">
+  <img src="https://img.shields.io/badge/-Swagger-black.svg?logo=Swagger&style=flat">
   <img src="https://img.shields.io/badge/-Htmx-grey.svg?logo=Htmx&style=flat">
   <img src="https://img.shields.io/badge/-Java-007396.svg?logo=Java&style=flat">
   <img src="https://img.shields.io/badge/-Spring Boot-lightyellow.svg?logo=Spring Boot&style=flat">
@@ -33,6 +34,13 @@ project_root
 └── backend (Spring boot)
 ```
 
+## 目次
+
+1. [デモ](#デモ)
+1. [プロジェクト概要](#プロジェクト概要)
+1. [起動方法](#起動方法)
+1. [テスト実施](#テスト実施)
+1. [Swagger](#swagger)
 
 ## デモ
 ### ユーザー作成
@@ -143,3 +151,12 @@ $ npm run test:be:linux
 $ cd frontend
 $ npm run test:be:windows
 ```
+
+## Swagger
+Swaggerを用いてAPI定義を作成しています。
+
+API定義を参照するにはバックエンドを起動後に以下のURLにアクセスします。
+
+http://localhost:8080/swagger-ui/index.html
+
+<img src="https://private-user-images.githubusercontent.com/42198184/328015577-95b3b095-12d1-450d-b3e2-3f6fcc78224a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ5MTA2MDIsIm5iZiI6MTcxNDkxMDMwMiwicGF0aCI6Ii80MjE5ODE4NC8zMjgwMTU1NzctOTViM2IwOTUtMTJkMS00NTBkLWIzZTItM2Y2ZmNjNzgyMjRhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTA1VDExNTgyMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE0ODI2MjY2Mzk3ZTU3YzRlZTRhZWIxNDQ3NDZiZTNkNmFkYTAyMDg1NmJiNDc5NjBiYzVlZjllNGFkZDVmMTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.ZzqY3AMt3ft2rv1d1ssZlQER-wtF9v8-mpj0-ykU1EI">

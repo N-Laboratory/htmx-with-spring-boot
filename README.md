@@ -1,5 +1,6 @@
 <h1 align="center">HTMX + Spring Boot + TailwindCSS</h1>
 <p align="center">
+  <img src="https://img.shields.io/badge/-Swagger-black.svg?logo=Swagger&style=flat">
   <img src="https://img.shields.io/badge/-Htmx-grey.svg?logo=Htmx&style=flat">
   <img src="https://img.shields.io/badge/-Java-007396.svg?logo=Java&style=flat">
   <img src="https://img.shields.io/badge/-Spring Boot-lightyellow.svg?logo=Spring Boot&style=flat">
@@ -35,9 +36,15 @@ project_root
 ├── frontend (Htmx)
 └── backend (Spring boot)
 ```
+## Contents
 
+1. [Demo](#demo)
+1. [Project Overview](#project-overview)
+1. [How to use](#how-to-use)
+1. [Run test](#run-test)
+1. [Swagger](#swagger)
 
-## DEMO
+## Demo
 ### Create User
 <img src="https://private-user-images.githubusercontent.com/42198184/328012431-5f7a1135-5498-4f90-9da4-046672c853a7.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ5MDcxOTIsIm5iZiI6MTcxNDkwNjg5MiwicGF0aCI6Ii80MjE5ODE4NC8zMjgwMTI0MzEtNWY3YTExMzUtNTQ5OC00ZjkwLTlkYTQtMDQ2NjcyYzg1M2E3LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTA1VDExMDEzMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBjMTE2YjliZTk4ZjY4MWMzYzgyNjQ2MTQyNjJkMmI1OThmOWFiN2Q0NTZkNGUzOWFhMzJhODJhMjVmN2Q2MzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.DE33_E0rWF1SarPPyTyRmZ14WZypW3sXf8_6XUygteM">
 
@@ -143,3 +150,12 @@ $ npm run test:be:linux
 $ cd frontend
 $ npm run test:be:windows
 ```
+
+## Swagger
+API definitions are created using Swagger.
+
+To see the API definition, access the following URL after starting the back-end.
+
+http://localhost:8080/swagger-ui/index.html
+
+<img src="https://private-user-images.githubusercontent.com/42198184/328015577-95b3b095-12d1-450d-b3e2-3f6fcc78224a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ5MTA2MDIsIm5iZiI6MTcxNDkxMDMwMiwicGF0aCI6Ii80MjE5ODE4NC8zMjgwMTU1NzctOTViM2IwOTUtMTJkMS00NTBkLWIzZTItM2Y2ZmNjNzgyMjRhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTA1VDExNTgyMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE0ODI2MjY2Mzk3ZTU3YzRlZTRhZWIxNDQ3NDZiZTNkNmFkYTAyMDg1NmJiNDc5NjBiYzVlZjllNGFkZDVmMTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.ZzqY3AMt3ft2rv1d1ssZlQER-wtF9v8-mpj0-ykU1EI">
