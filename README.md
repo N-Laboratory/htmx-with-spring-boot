@@ -17,7 +17,9 @@
     <img src="https://img.shields.io/badge/-FollowMyAccount-grey.svg?logo=github&style=flat">
   </a>
 </p>
-[日本語版 README はこちら](https://github.com/N-Laboratory/htmx-with-spring-boot/blob/main/README-JP.md)
+<a href="https://github.com/N-Laboratory/htmx-with-spring-boot/blob/main/README-JP.md" target="_blank">
+  日本語版 README はこちら
+</a>
 
 I created this project for learning Htmx and Spring boot.
 
