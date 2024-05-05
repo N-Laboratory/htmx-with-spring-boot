@@ -79,31 +79,36 @@ project_root
 このプロジェクトのディレクトリ構成は以下になっています。
 
 データベースはインメモリーデータベースを採用しているため別途環境を構築する必要はありません。
+
 ```sh
 project_root
 ├── frontend (Htmx)
 └── backend (Spring boot)
 ```
-### フロントエンド環境構築
-```bash
-$ cd frontend
-$ npm ci
-```
 ### フロントエンド起動
 ```bash
 $ cd frontend
+$ npm ci
 $ npm run start:fe
 ```
-### バックエンド環境構築
-```bash
-$ cd frontend
-$ npm run build:be
-```
+
 ### バックエンド起動
+### Linux / Mac
 ```bash
 $ cd frontend
+$ npm run build:be:linux
 $ npm run start:be
 ```
+
+### Windows
+```bash
+$ cd frontend
+$ npm run build:be:windows
+$ npm run start:be
+```
+フロントエンドとバックエンドの起動後に以下のURLにアクセスします。
+
+http://localhost:3000/src/
 
 ## テスト実施
 ### E2Eテスト実施
@@ -115,17 +120,24 @@ $ npm run test:fe
 ```
 
 ### バックエンド単体テスト実施
+### Linux / Mac
 ```bash
 $ cd frontend
-$ npm run test:be
+$ npm run test:be:linux
+```
+
+### Windows
+```bash
+$ cd frontend
+$ npm run test:be:windows
 ```
 
 ## デモ
 ### ユーザー作成
-<img src="https://user-images.githubusercontent.com/42198184/236676267-6985a216-7d7c-4913-a617-f3bfca127521.gif">
+<img src="https://private-user-images.githubusercontent.com/42198184/328012431-5f7a1135-5498-4f90-9da4-046672c853a7.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ5MDcxOTIsIm5iZiI6MTcxNDkwNjg5MiwicGF0aCI6Ii80MjE5ODE4NC8zMjgwMTI0MzEtNWY3YTExMzUtNTQ5OC00ZjkwLTlkYTQtMDQ2NjcyYzg1M2E3LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTA1VDExMDEzMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBjMTE2YjliZTk4ZjY4MWMzYzgyNjQ2MTQyNjJkMmI1OThmOWFiN2Q0NTZkNGUzOWFhMzJhODJhMjVmN2Q2MzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.DE33_E0rWF1SarPPyTyRmZ14WZypW3sXf8_6XUygteM">
 
 ### ユーザー更新
-<img src="https://user-images.githubusercontent.com/42198184/236676291-4a529a3d-127e-4015-99aa-0c63d154b650.gif">
+<img src="https://private-user-images.githubusercontent.com/42198184/328012435-b24fdd5c-9466-4468-b72e-8db6ff5480cd.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ5MDcxOTIsIm5iZiI6MTcxNDkwNjg5MiwicGF0aCI6Ii80MjE5ODE4NC8zMjgwMTI0MzUtYjI0ZmRkNWMtOTQ2Ni00NDY4LWI3MmUtOGRiNmZmNTQ4MGNkLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTA1VDExMDEzMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc2ZGYxODk1MGM1YTBjNmM0ZWNiY2ZhNDhkZjFmYmZiNTg0MDc2MTJmNWE4OGNhMjU5ZmUyMGI5ZjgwNzdkZTkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.yd4aCuA7K3HO0oemfnwysRXCdsPm6FV3tl5WCoInEHA">
 
 ### ユーザー削除
-<img src="https://user-images.githubusercontent.com/42198184/236676293-1c76f008-88d0-44db-a0a7-3ecfbcf05dc2.gif">
+<img src="https://private-user-images.githubusercontent.com/42198184/328012433-59762be8-d475-4e1b-95cb-348346475c5f.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ5MDcxOTIsIm5iZiI6MTcxNDkwNjg5MiwicGF0aCI6Ii80MjE5ODE4NC8zMjgwMTI0MzMtNTk3NjJiZTgtZDQ3NS00ZTFiLTk1Y2ItMzQ4MzQ2NDc1YzVmLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTA1VDExMDEzMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTYwNWE0ZWY5NDQxZGFjNTJkOTM0MTQwMjEzYmFiMzg2Mjk5ZGJmZjcyNmYwMzFmMzdiYTc2ZDQ5NTlkOGQwYzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.kdVrpAP6p1ZWUdwVpERM6nxmTXUtXj6AICEbUi9WXHU">
