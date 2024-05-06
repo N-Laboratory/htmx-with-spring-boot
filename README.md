@@ -26,7 +26,7 @@ I created this project for learning Htmx and Spring boot.
 
 This project implements the following features.
 * Search user
-* Create User
+* Create user
 * Update user
 * Delete user
 
