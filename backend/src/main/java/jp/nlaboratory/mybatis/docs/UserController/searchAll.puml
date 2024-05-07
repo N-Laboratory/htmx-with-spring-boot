@@ -1,0 +1,30 @@
+@startuml Get all user
+title Get all user
+
+hide footbox
+actor user
+Participant Frontend as FE
+Participant Backend as BE
+database database as DB
+
+user -> FE : access
+activate FE
+
+  FE -> BE : GET /api/v1/users
+  activate BE
+
+    BE -> DB : search all user
+    activate DB
+    note right
+        select * from user
+    end note
+    DB -> BE : return
+    deactivate DB
+
+  BE -> FE : response (text/html)
+  deactivate BE
+
+FE -> user : display user list
+deactivate FE
+
+@enduml
