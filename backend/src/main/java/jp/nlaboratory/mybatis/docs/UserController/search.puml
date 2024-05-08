@@ -1,0 +1,30 @@
+@startuml Get user by id
+title Get user by id
+
+hide footbox
+actor user
+Participant Frontend as FE
+Participant Backend as BE
+database database as DB
+
+user -> FE : access
+activate FE
+
+  FE -> BE : GET /api/v1/user
+  activate BE
+
+    BE -> DB : search user by id
+    activate DB
+    note right
+        select * from user where id = #{id}
+    end note
+    DB -> BE : return
+    deactivate DB
+
+  BE -> FE : response (text/html)
+  deactivate BE
+
+FE -> user : display user info in modal
+deactivate FE
+
+@enduml
