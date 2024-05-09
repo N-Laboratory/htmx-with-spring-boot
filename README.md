@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/badge/-MyBatis-grey.svg?logo=MyBatis&style=flat">
   <img src="https://img.shields.io/badge/-JUnit5-F36D00.svg?logo=JUnit5&style=flat">
   <img src="https://img.shields.io/badge/-TailWind CSS-white.svg?logo=tailwind css&style=flat">
+  <img src="https://img.shields.io/badge/-PlantUML-grey.svg?logo=PlantUML&style=flat">
   <img src="https://img.shields.io/badge/-Windows-0078D6.svg?logo=windows&style=flat">
   <img src="https://img.shields.io/badge/-Mac-grey.svg?logo=macos&style=flat">
   <img src="https://img.shields.io/badge/-Linux-black.svg?logo=linux&style=flat">
@@ -159,4 +160,4 @@ To see the API definition, access the following URL after starting the back-end.
 
 http://localhost:8080/swagger-ui/index.html
 
-<img width="1085" alt="swagger" src="https://github.com/N-Laboratory/htmx-with-spring-boot/assets/42198184/e7511701-8347-437b-b454-c38174584d3a">
+<img width="768" src="https://github.com/N-Laboratory/htmx-with-spring-boot/assets/42198184/e7511701-8347-437b-b454-c38174584d3a">
