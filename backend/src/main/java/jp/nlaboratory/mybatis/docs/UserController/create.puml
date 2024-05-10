@@ -1,0 +1,55 @@
+dou@startuml Create user
+title Create user
+
+hide footbox
+actor user
+Participant Frontend as FE
+Participant Backend as BE
+database database as DB
+
+user -> FE : access
+activate FE
+alt request parameter is invalid
+  FE -> BE : POST /api/v1/user
+  activate BE
+  BE -> BE : throw InvalidParameterException
+  note right
+      ExceptionHandler handle InvalidParameterException
+  end note
+  BE -> FE : return error message (text/html)
+  deactivate BE
+else user creation failed
+  FE -> BE : POST /api/v1/user
+  activate BE
+    BE -> DB : create user
+    activate DB
+    note right
+        insert into user (email, password)
+        values (#{email}, #{password})
+    end note
+    DB -> BE : return false
+    deactivate DB
+    BE -> BE : throw DataBaseException
+    note right
+        ExceptionHandler handle DataBaseException
+    end note
+  BE -> FE : return error message (text/html)
+  deactivate BE
+else user creation succeeded
+  FE -> BE : POST /api/v1/user
+  activate BE
+    BE -> DB : create user
+    activate DB
+    note right
+        insert into user (email, password)
+        values (#{email}, #{password})
+    end note
+    DB -> BE : return true
+    deactivate DB
+  BE -> FE : return created user info (text/html)
+  deactivate BE
+end
+FE -> user : display response in modal
+deactivate FE
+
+@enduml
