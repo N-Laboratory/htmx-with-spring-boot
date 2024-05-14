@@ -9,22 +9,52 @@ database database as DB
 
 user -> FE : access
 activate FE
-
-  FE -> BE : GET /api/v1/user
-  activate BE
-
-    BE -> DB : search user by id
-    activate DB
+  alt an error has occurred when user search
+    FE -> BE : GET /api/v1/user :id
+    activate BE
+      BE -> DB : search user by id
+      activate DB
+        note right
+            select * from user where id = #{id}
+        end note
+        DB -> BE : throw Exception
+      deactivate DB
+    BE -> BE : throw DataBaseException
     note right
-        select * from user where id = #{id}
+      ExceptionHandler handle DataBaseException
     end note
-    DB -> BE : return
-    deactivate DB
-
-  BE -> FE : response (text/html)
-  deactivate BE
-
-FE -> user : display user info in modal
+    BE -> FE : return error message (text/html)
+    deactivate BE
+  else user not found
+    FE -> BE : GET /api/v1/user :id
+    activate BE
+      BE -> DB : search user by id
+      activate DB
+        note right
+            select * from user where id = #{id}
+        end note
+        DB -> BE : return empty object
+      deactivate DB
+    BE -> BE : throw DataNotFoundException
+    note right
+      ExceptionHandler handle DataNotFoundException
+    end note
+    BE -> FE : return error message (text/html)
+    deactivate BE
+  else user search succeeded
+    FE -> BE : GET /api/v1/user :id
+    activate BE
+      BE -> DB : search user by id
+      activate DB
+        note right
+            select * from user where id = #{id}
+        end note
+        DB -> BE : return user
+      deactivate DB
+    BE -> FE : return user (text/html)
+    deactivate BE
+  end
+FE -> user : display response in modal
 deactivate FE
 
 @enduml
