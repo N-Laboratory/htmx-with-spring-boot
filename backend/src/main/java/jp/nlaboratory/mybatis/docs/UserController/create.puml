@@ -10,7 +10,7 @@ database database as DB
 user -> FE : access
 activate FE
   alt request parameter is invalid
-    FE -> BE : POST /api/v1/user
+    FE -> BE : POST /api/v1/user :request(email, password)
     activate BE
       BE -> BE : throw InvalidParameterException
       note right
@@ -19,7 +19,7 @@ activate FE
       BE -> FE : return error message (text/html)
     deactivate BE
   else user creation failed
-    FE -> BE : POST /api/v1/user
+    FE -> BE : POST /api/v1/user :request(email, password)
     activate BE
       BE -> DB : create user
       activate DB
@@ -36,7 +36,7 @@ activate FE
       BE -> FE : return error message (text/html)
     deactivate BE
   else user creation succeeded
-    FE -> BE : POST /api/v1/user
+    FE -> BE : POST /api/v1/user :request(email, password)
     activate BE
       BE -> DB : create user
       activate DB
