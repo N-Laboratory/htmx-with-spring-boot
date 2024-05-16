@@ -1,4 +1,4 @@
-dou@startuml Create user
+@startuml Create user
 title Create user
 
 hide footbox
