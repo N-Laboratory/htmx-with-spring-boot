@@ -1,0 +1,18 @@
+@startuml Show user creation modal
+title Show user creation modal
+
+hide footbox
+actor user
+Participant Frontend as FE
+Participant Backend as BE
+
+user -> FE : access
+activate FE
+  FE -> BE : GET /api/v1/modal/create
+  activate BE
+    BE -> FE : return user creation modal (text/html)
+  deactivate BE
+FE -> user : display response
+deactivate FE
+
+@enduml
