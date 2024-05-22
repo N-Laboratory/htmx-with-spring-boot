@@ -1,0 +1,60 @@
+@startuml Show user deletion modal
+title Show user deletion modal
+
+hide footbox
+actor user
+Participant Frontend as FE
+Participant Backend as BE
+database database as DB
+
+user -> FE : access
+activate FE
+  alt an error has occurred when user search
+    FE -> BE : GET /api/v1/modal/delete :id
+    activate BE
+      BE -> DB : search user by id
+      activate DB
+        note right
+            select * from user where id = #{id}
+        end note
+        DB -> BE : throw Exception
+      deactivate DB
+    BE -> BE : throw DataBaseException
+    note right
+      ExceptionHandler handle DataBaseException
+    end note
+    BE -> FE : return error message (text/html)
+    deactivate BE
+  else user not found
+    FE -> BE : GET /api/v1/modal/delete :id
+    activate BE
+      BE -> DB : search user by id
+      activate DB
+        note right
+            select * from user where id = #{id}
+        end note
+        DB -> BE : return empty object
+      deactivate DB
+    BE -> BE : throw DataNotFoundException
+    note right
+      ExceptionHandler handle DataNotFoundException
+    end note
+    BE -> FE : return error message (text/html)
+    deactivate BE
+  else user search succeeded
+    FE -> BE : GET /api/v1/modal/delete :id
+    activate BE
+      BE -> DB : search user by id
+      activate DB
+        note right
+            select * from user where id = #{id}
+        end note
+        DB -> BE : return user
+      deactivate DB
+    BE -> FE : return user deletion modal (text/html)
+    deactivate BE
+  end
+FE -> user : display response
+deactivate FE
+
+@enduml
