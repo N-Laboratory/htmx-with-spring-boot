@@ -6,6 +6,9 @@ import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.springframework.core.io.Resource;
 
+/**
+ * Xml loader for unit testing
+ */
 public class XmlDataLoader extends AbstractDataSetLoader {
 
   @Override
